@@ -1,0 +1,14 @@
+# --- Seguridad (Credenciales) ---
+/config/db.php
+.env
+.htaccess
+
+# --- Dependencias (Se instalan, no se suben) ---
+/vendor/
+
+# --- Sistema Operativo ---
+.DS_Store
+Thumbs.db
+
+# --- Media (Opcional, si no quieres llenar el repo de imagenes) ---
+/assets/uploads/
