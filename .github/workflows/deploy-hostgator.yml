@@ -1,0 +1,34 @@
+name: 🚀 Despliegue a Hostgator
+
+# ESTO ES LO QUE LO HACE "SEMI-AUTOMÁTICO"
+# No se ejecuta solo al hacer push. Espera a que tú presiones el botón.
+on:
+  workflow_dispatch:
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Obtener el código más reciente (Checkout)
+      uses: actions/checkout@v4
+    
+    - name: 📂 Sincronizar archivos con Hostgator (FTP)
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        
+        # --- CONFIGURACIÓN DE CARPETA ---
+        # ./public_html/ es la raíz de tu hosting.
+        # Si quieres subirlo a una carpeta especifica, cámbialo ej: ./public_html/mi-juego/
+        server-dir: ./public_html/
+        
+        # --- SEGURIDAD ---
+        # Esto evita subir archivos basura o de configuración de git
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/.github/**
+          **/node_modules/**
