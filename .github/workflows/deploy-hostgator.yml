@@ -1,7 +1,6 @@
-name: 🚀 Despliegue a Hostgator
+name: 🚀 Despliegue Temporal (Landing Page)
 
-# ESTO ES LO QUE LO HACE "SEMI-AUTOMÁTICO"
-# No se ejecuta solo al hacer push. Espera a que tú presiones el botón.
+# Se ejecuta solo manualmente
 on:
   workflow_dispatch:
 
@@ -10,25 +9,37 @@ jobs:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Obtener el código más reciente (Checkout)
+    - name: 🚚 Obtener el código más reciente
       uses: actions/checkout@v4
     
-    - name: 📂 Sincronizar archivos con Hostgator (FTP)
+    - name: 📂 Sincronizar archivos con Hostgator
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         
-        # --- CONFIGURACIÓN DE CARPETA ---
-        # ./public_html/ es la raíz de tu hosting.
-        # Si quieres subirlo a una carpeta especifica, cámbialo ej: ./public_html/mi-juego/
+        # --- TRUCO TEMPORAL ---
+        # Esto le dice: "Solo sube lo que hay dentro de landing_temp"
+        # De esta forma, el index.html de esa carpeta se convertirá en tu página principal.
+        local-dir: ./landing_temp/
+        
+        # Destino en el servidor
         server-dir: ./public_html/
         
-        # --- SEGURIDAD ---
-        # Esto evita subir archivos basura o de configuración de git
+        # --- FILTRO DE SEGURIDAD ---
+        # Aunque usamos local-dir, dejamos esto por seguridad para el futuro
         exclude: |
           **/.git*
           **/.git*/**
           **/.github/**
           **/node_modules/**
+          README.md
+          CHANGELOG.md
+          LICENSE
+          composer.json
+          composer.lock
+          package.json
+          package-lock.json
+          .env
+          .env.local
