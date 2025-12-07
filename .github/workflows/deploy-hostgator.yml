@@ -1,4 +1,4 @@
-name: 🚀 Despliegue Temporal (Landing Page)
+name: 🚀 Despliegue a Hostgator
 
 # Se ejecuta solo manualmente
 on:
@@ -19,16 +19,11 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         
-        # --- TRUCO TEMPORAL ---
-        # Esto le dice: "Solo sube lo que hay dentro de landing_temp"
-        # De esta forma, el index.html de esa carpeta se convertirá en tu página principal.
-        local-dir: ./landing_temp/
-        
         # Destino en el servidor
         server-dir: ./public_html/
         
         # --- FILTRO DE SEGURIDAD ---
-        # Aunque usamos local-dir, dejamos esto por seguridad para el futuro
+        # Esto asegura que NO subas basura ni archivos sensibles
         exclude: |
           **/.git*
           **/.git*/**
@@ -43,3 +38,4 @@ jobs:
           package-lock.json
           .env
           .env.local
+          .env.example
