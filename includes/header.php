@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capibara Games</title>
+    <title>CAPIBARA GAMES</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
@@ -26,10 +26,13 @@
                         <a href="about.php" class="nav__link <?php echo ($paginaActual == 'about.php') ? 'active' : ''; ?>">ABOUT</a>
                     </li>
                     <li>
-                        <a href="index.php#blog" class="nav__link">BLOG</a>
+                        <a href="blog.php" class="nav__link <?php echo ($paginaActual == 'blog.php' || $paginaActual == 'post.php') ? 'active' : ''; ?>">BLOG</a>
                     </li>
                     <li>
                         <a href="contact.php" class="nav__link <?php echo ($paginaActual == 'contact.php') ? 'active' : ''; ?>">CONTACTO</a>
+                    </li>
+                    <li>
+                        <a href="games.php" class="nav__link <?php echo ($paginaActual == 'games.php') ? 'active' : ''; ?>">GAMES</a>
                     </li>
                 </ul>
             </nav>
