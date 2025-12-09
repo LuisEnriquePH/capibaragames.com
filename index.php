@@ -25,7 +25,7 @@ try {
         
         <div class="hero__content">
             <h1 class="hero__title">CAPIBARA GAMES</h1>
-            <h2 class="hero__slogan">NO SE TRATA DE ENCAJAR, SE TRATA DE SER.</h2>
+            <h2 class="hero__slogan">DISFRUTO LA VIDA JUGANDO Y HACIENDO JUEGOS</h2>
         </div>
     </section>
 
