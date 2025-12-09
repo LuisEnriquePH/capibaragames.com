@@ -1,0 +1,46 @@
+{
+  "kind": "youtube#searchListResponse",
+  "etag": "246b8lu5h7eAIJRGBrfL19tyC-U",
+  "nextPageToken": "CAEQAA",
+  "regionCode": "MX",
+  "pageInfo": {
+    "totalResults": 44,
+    "resultsPerPage": 1
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "mc3R6ZldYN_RtwyZsZzBdSaE6bQ",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "Yz4YRMZEcFs"
+      },
+      "snippet": {
+        "publishedAt": "2025-10-09T02:30:14Z",
+        "channelId": "UCU6_Ax2E_EX3ZVekN7_yAjw",
+        "title": "¡Descubre el poder de los hechizos en Folly of the Wizard!",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/Yz4YRMZEcFs/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/Yz4YRMZEcFs/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/Yz4YRMZEcFs/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          }
+        },
+        "channelTitle": "CapibaraDev",
+        "liveBroadcastContent": "none",
+        "publishTime": "2025-10-09T02:30:14Z"
+      }
+    }
+  ]
+}
