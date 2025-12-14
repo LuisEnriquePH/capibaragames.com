@@ -187,3 +187,169 @@
 .games-container .cards-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
+/* =========================================
+   MARKDOWN CONTENT STYLING
+   ========================================= */
+
+/* Estilos para contenido de posts generado por markdown */
+.post-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Párrafos con espaciado y justificación */
+.post-content p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+/* Encabezados dentro del contenido */
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+    font-family: var(--f-title);
+    color: var(--c-white);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.post-content h1 {
+    font-size: 2.5rem;
+    color: var(--c-green-main);
+    text-shadow: var(--shadow-retro);
+}
+
+.post-content h2 {
+    font-size: 2rem;
+    color: var(--c-green-light);
+}
+
+.post-content h3 {
+    font-size: 1.5rem;
+    color: var(--c-highlight);
+}
+
+/* Listas */
+.post-content ul,
+.post-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+    list-style-position: outside;
+}
+
+.post-content ul {
+    list-style-type: disc;
+}
+
+.post-content ol {
+    list-style-type: decimal;
+}
+
+.post-content li {
+    margin-bottom: 0.5rem;
+    line-height: 1.8;
+}
+
+/* Enlaces */
+.post-content a {
+    color: var(--c-green-main);
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.post-content a:hover {
+    color: var(--c-green-light);
+}
+
+/* Código inline y bloques */
+.post-content code {
+    background-color: var(--c-bg-card);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    color: var(--c-highlight);
+}
+
+.post-content pre {
+    background-color: var(--c-bg-card);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--c-green-main);
+}
+
+.post-content pre code {
+    background-color: transparent;
+    padding: 0;
+    color: var(--c-white);
+}
+
+/* Citas (blockquotes) */
+.post-content blockquote {
+    border-left: 4px solid var(--c-green-main);
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--c-white);
+    background-color: rgba(133, 209, 62, 0.1);
+    padding: 1rem 1rem 1rem 1.5rem;
+    border-radius: 4px;
+}
+
+/* Imágenes dentro del contenido */
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    box-shadow: var(--shadow-retro);
+}
+
+/* Líneas horizontales */
+.post-content hr {
+    border: none;
+    border-top: 2px solid var(--c-green-main);
+    margin: 2rem 0;
+}
+
+/* Tablas */
+.post-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+.post-content th,
+.post-content td {
+    padding: 0.75rem;
+    border: 1px solid var(--c-bg-card);
+    text-align: left;
+}
+
+.post-content th {
+    background-color: var(--c-bg-card);
+    color: var(--c-green-main);
+    font-weight: bold;
+}
+
+/* Strong y énfasis */
+.post-content strong {
+    color: var(--c-white);
+    font-weight: 600;
+}
+
+.post-content em {
+    color: var(--c-green-light);
+    font-style: italic;
+}
+
+/* Primer párrafo más destacado */
+.post-content > p:first-of-type {
+    font-size: 1.1em;
+    color: var(--c-white);
+}
