@@ -3,17 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAPIBARA GAMES</title>
+    <?php 
+    // SEO: Dynamic meta tags
+    $pageTitle = isset($pageTitle) ? $pageTitle : "Capibara Games - Desarrollo Indie de Videojuegos";
+    $metaDescription = isset($metaDescription) ? $metaDescription : "Portfolio de desarrollo indie de videojuegos por Capibara Games. Descubre nuestros proyectos, devlogs y contenido sobre creación de juegos.";
+    $currentUrl = "https://capibaragames.com/" . basename($_SERVER['PHP_SELF']);
+    ?>
+    <title><?php echo htmlspecialchars($pageTitle); ?></title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="<?php echo htmlspecialchars($metaDescription); ?>">
+    <link rel="canonical" href="<?php echo htmlspecialchars($currentUrl); ?>">
+    
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="<?php echo htmlspecialchars($pageTitle); ?>">
+    <meta property="og:description" content="<?php echo htmlspecialchars($metaDescription); ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?php echo htmlspecialchars($currentUrl); ?>">
+    <meta property="og:site_name" content="Capibara Games">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/pages.css">
-    <link rel="stylesheet" href="css/utilities.css">
+    
+    <!-- CSS with cache-busting -->
+    <link rel="stylesheet" href="css/base.css?v=<?php echo filemtime('css/base.css'); ?>">
+    <link rel="stylesheet" href="css/layout.css?v=<?php echo filemtime('css/layout.css'); ?>">
+    <link rel="stylesheet" href="css/components.css?v=<?php echo filemtime('css/components.css'); ?>">
+    <link rel="stylesheet" href="css/pages.css?v=<?php echo filemtime('css/pages.css'); ?>">
+    <link rel="stylesheet" href="css/utilities.css?v=<?php echo filemtime('css/utilities.css'); ?>">
 </head>
 <body>
+
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
     <header class="header">
         <div class="header__container">

@@ -63,7 +63,8 @@ try {
                     <a href="post.php?slug=<?php echo htmlspecialchars($latestPost['slug']); ?>">
                         <img src="<?php echo htmlspecialchars($latestPost['image_url']); ?>" 
                              alt="<?php echo htmlspecialchars($latestPost['title']); ?>" 
-                             class="card__img">
+                             class="card__image"
+                             loading="lazy">
                     </a>
                 </div>
                     <div class="card__body">
@@ -103,7 +104,8 @@ try {
                 <div class="card__media">
                     <img src="<?php echo htmlspecialchars($latestGame['image_url']); ?>" 
                          alt="<?php echo htmlspecialchars($latestGame['title']); ?>" 
-                         class="card__img">
+                         class="card__image"
+                         loading="lazy">
                 </div>
                 <div class="card__body">
                     <h3 class="card__title"><?php echo htmlspecialchars($latestGame['title']); ?></h3>

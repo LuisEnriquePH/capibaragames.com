@@ -34,7 +34,7 @@ try {
                     </div>
                     
                     <div class="card__media">
-                        <img src="<?php echo htmlspecialchars($game['image_url']); ?>" 
+                        <img src="<?php echo htmlspecialchars($game['image_url']); ?>" loading="lazy" 
                              alt="<?php echo htmlspecialchars($game['title']); ?>" 
                              class="card__img">
                     </div>

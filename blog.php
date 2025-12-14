@@ -34,7 +34,7 @@ try {
                     
                     <div class="card__media">
                         <a href="post.php?slug=<?php echo htmlspecialchars($post['slug']); ?>">
-                            <img src="<?php echo htmlspecialchars($post['image_url']); ?>" 
+                            <img src="<?php echo htmlspecialchars($post['image_url']); ?>" loading="lazy" 
                                  alt="<?php echo htmlspecialchars($post['title']); ?>" 
                                  class="card__img">
                         </a>
