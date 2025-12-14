@@ -181,16 +181,16 @@ class AutoSave {
                         // Trigger change event for any listeners (like EasyMDE)
                         field.dispatchEvent(new Event('change'));
                     }
-                });
-        });
-    } else {
-    this.clearDraft();
-}
+                }
+            });
+        } else {
+            this.clearDraft();
+        }
     }
 
-clearDraft() {
-    localStorage.removeItem(this.storageKey);
-}
+    clearDraft() {
+        localStorage.removeItem(this.storageKey);
+    }
 }
 
 // ========================================
