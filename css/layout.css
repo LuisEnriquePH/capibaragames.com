@@ -276,8 +276,13 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    z-index: -1;
+    z-index: 0;
+    /* Cambiado de -1 a 0 para compatibilidad móvil */
     overflow: hidden;
+    transform: translateZ(0);
+    /* Forzar GPU layer para móvil */
+    -webkit-transform: translateZ(0);
+    /* Safari móvil */
 }
 
 #home-video-bg .hero__video {
