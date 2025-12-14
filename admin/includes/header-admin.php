@@ -21,26 +21,26 @@
                 themes: [
                     {
                         "capibara-admin": {
-                            "primary": "#a855f7",        // Purple (--c-primary)
-                            "primary-content": "#ffffff",
+                            "primary": "#85D13E",        // Capibara Green Main
+                            "primary-content": "#000000",
                             
-                            "secondary": "#ec4899",      // Pink (--c-secondary)
-                            "secondary-content": "#ffffff",
+                            "secondary": "#FFD700",      // Yellow Highlight
+                            "secondary-content": "#000000",
                             
-                            "accent": "#10b981",         // Green accent
+                            "accent": "#4B0082",         // Purple Accent
                             "accent-content": "#ffffff",
                             
-                            "neutral": "#1e1b2e",        // Dark purple-grey
-                            "neutral-content": "#e0e0e0",
+                            "neutral": "#222222",        // Card background
+                            "neutral-content": "#FEFFFE",
                             
-                            "base-100": "#0f0a1e",       // Very dark bg (--c-bg-dark)
-                            "base-200": "#1a1332",       // Darker purple
-                            "base-300": "#261d45",       // Medium dark purple
-                            "base-content": "#e0e0e0",   // Light grey text
+                            "base-100": "#333333",       // Grey dark background
+                            "base-200": "#222222",       // Darker grey
+                            "base-300": "#1a1a1a",       // Even darker
+                            "base-content": "#FEFFFE",   // White text
                             
                             "info": "#3b82f6",
-                            "success": "#10b981",
-                            "warning": "#f59e0b",
+                            "success": "#85D13E",
+                            "warning": "#FFD700",
                             "error": "#ef4444",
                         },
                     },
@@ -52,34 +52,45 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0f0a1e 0%, #1a1332 100%);
+            background-color: #333333;
         }
         
-        /* Gradient backgrounds for cards */
+        /* Card backgrounds matching brand */
         .card {
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(236, 72, 153, 0.05) 100%);
-            border: 1px solid rgba(168, 85, 247, 0.2);
+            background-color: #222222;
+            border: 1px solid rgba(133, 209, 62, 0.2);
         }
         
-        /* Custom scrollbar */
+        /* Custom scrollbar with green accent */
         ::-webkit-scrollbar {
             width: 10px;
         }
         ::-webkit-scrollbar-track {
-            background: #1a1332;
+            background: #222222;
         }
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            background: linear-gradient(135deg, #85D13E 0%, #93DB46 100%);
             border-radius: 5px;
         }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #57B82B 0%, #85D13E 100%);
+        }
         
-        /* Gradient buttons */
+        /* Green gradient buttons matching brand */
         .btn-primary {
-            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            background: linear-gradient(135deg, #85D13E 0%, #93DB46 100%);
             border: none;
+            color: #000000;
+            font-weight: 600;
         }
         .btn-primary:hover {
-            background: linear-gradient(135deg, #9333ea 0%, #db2777 100%);
+            background: linear-gradient(135deg, #57B82B 0%, #85D13E 100%);
+        }
+        
+        /* Navbar with subtle green accent */
+        .navbar {
+            background-color: #222222;
+            border-bottom: 2px solid rgba(133, 209, 62, 0.3);
         }
     </style>
 </head>
