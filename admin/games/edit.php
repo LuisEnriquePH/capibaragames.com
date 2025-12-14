@@ -18,9 +18,7 @@ $id = $_GET['id'];
 // Obtener datos actuales
 $stmt = $pdo->prepare("SELECT * FROM games WHERE id = :id");
 $stmt->execute(['id' => $id]);
-$game = $stmt->fetch(PDO::FETCH_ASS
-
-OC);
+$game = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$game) {
     die("Juego no encontrado.");
