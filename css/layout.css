@@ -343,9 +343,11 @@
     /* Eliminado scroll horizontal, volver a stack vertical normal */
 
     .home-content {
-        justify-content: center;
-        /* Centrar verticalmente en móvil si cabe */
-        padding-bottom: 20px;
+        justify-content: flex-start;
+        /* Forzar alineación arriba en móvil */
+        padding-top: 120px;
+        /* Asegurar que no quede oculto por el header pero empiece arriba */
+        padding-bottom: 40px;
     }
 
     .home-content .hero__content {
