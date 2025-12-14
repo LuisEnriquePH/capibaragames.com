@@ -143,7 +143,12 @@
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                     <li class="menu-title"><?php echo htmlspecialchars($_SESSION['username']); ?></li>
                     <li><a href="<?php echo $publicPath; ?>index.php" target="_blank">🌐 Ver Sitio</a></li>
-                    <li><a href="<?php echo $basePath; ?>logout.php" class="text-error">🚪 Salir</a></li>
+<li>
+                        <form action="<?php echo $basePath; ?>logout.php" method="POST" class="w-full p-0">
+                            <?php csrfField(); ?>
+                            <button type="submit" class="text-error w-full text-left py-2 px-4 hover:bg-base-200">🚪 Salir</button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>

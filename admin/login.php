@@ -1,12 +1,16 @@
 <?php
 session_start();
 require '../includes/db.php';
+require 'includes/csrf.php';
 
 $error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = trim($_POST['username']);
-    $password = $_POST['password'];
+    if (!verifyCSRFToken($_POST['csrf_token'] ?? '')) {
+        $error = "Sesión inválida. Por favor recarga la página.";
+    } else {
+        $username = trim($_POST['username']);
+        $password = $_POST['password'];
 
     if (!empty($username) && !empty($password)) {
         // Buscar usuario en la base de datos
@@ -26,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } else {
         $error = "Por favor completa todos los campos.";
+    }
     }
 }
 ?>
@@ -81,6 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <!-- Login Form -->
             <form action="login.php" method="POST" class="space-y-4">
+                <?php csrfField(); ?>
                 <!-- Username -->
                 <div class="form-control">
                     <label class="label">
