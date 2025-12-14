@@ -106,12 +106,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="text-center text-green mb-2"><?php echo $success; ?></p>
         <?php endif; ?>
 
-        <form action="edit.php?id=<?php echo $user['id']; ?>
-            <?php csrfField(); ?>" method="POST" class="contact-form">
+        <form action="edit.php?id=<?php echo $user['id']; ?>" method="POST" class="contact-form">
+            <?php csrfField(); ?>
             <div class="form__group">
                 <label class="form__label">Usuario</label>
                 <input type="text" name="username" class="form__input" required value="<?php echo htmlspecialchars($user['username']); ?>">
             </div>
+
 
             <div class="form__group">
                 <label class="form__label">Nueva Contraseña (Opcional)</label>

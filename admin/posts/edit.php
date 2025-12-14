@@ -139,12 +139,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="text-center text-green mb-2"><?php echo $success; ?></p>
         <?php endif; ?>
 
-        <form id="admin-form" action="edit.php?id=<?php echo $post['id']; ?>
-            <?php csrfField(); ?>" method="POST" class="contact-form" enctype="multipart/form-data">
+        <form id="admin-form" action="edit.php?id=<?php echo $post['id']; ?>" method="POST" class="contact-form" enctype="multipart/form-data">
+            <?php csrfField(); ?>
             <div class="form__group">
                 <label class="form__label">Título</label>
                 <input type="text" name="title" class="form__input" required value="<?php echo htmlspecialchars($post['title']); ?>">
             </div>
+
 
             <div class="form__group">
                 <label class="form__label">Extracto</label>

@@ -111,12 +111,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="text-center text-green mb-2"><?php echo $success; ?></p>
         <?php endif; ?>
 
-        <form id="admin-form" action="edit.php?id=<?php echo $game['id']; ?>
-            <?php csrfField(); ?>" method="POST" class="contact-form" enctype="multipart/form-data">
+        <form id="admin-form" action="edit.php?id=<?php echo $game['id']; ?>" method="POST" class="contact-form" enctype="multipart/form-data">
+            <?php csrfField(); ?>
             <div class="form__group">
                 <label class="form__label">Título del Juego</label>
                 <input type="text" name="title" class="form__input" required value="<?php echo htmlspecialchars($game['title']); ?>">
             </div>
+
 
             <div class="form__group">
                 <label class="form__label">Descripción Corta</label>
