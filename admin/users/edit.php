@@ -1,6 +1,6 @@
 <?php
 require '../includes/auth.php';
-require '../includes/csrf.php';
+require '../includes/upload.php';
 require '../../includes/db.php';
 
 $error = '';
