@@ -1,6 +1,7 @@
     </main>
 
     <!-- Load admin.js for existing functionality -->
-    <script src="js/admin.js"></script>
+    <?php $jsPath = $isInSubfolder ? '../js/admin.js' : 'js/admin.js'; ?>
+    <script src="<?php echo $jsPath; ?>"></script>
 </body>
 </html>

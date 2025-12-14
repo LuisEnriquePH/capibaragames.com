@@ -22,6 +22,13 @@
 </head>
 <body class="bg-base-200 min-h-screen">
 
+    <?php
+    // Determine base path for navigation
+    $isInSubfolder = (basename(dirname($_SERVER['PHP_SELF'])) !== 'admin');
+    $basePath = $isInSubfolder ? '../' : '';
+    $publicPath = $isInSubfolder ? '../../' : '../';
+    ?>
+
     <!-- Admin Navbar -->
     <div class="navbar bg-base-100 shadow-lg">
         <div class="navbar-start">
@@ -32,23 +39,23 @@
                     </svg>
                 </button>
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li><a href="index.php">📊 Dashboard</a></li>
-                    <li><a href="posts/index.php">✍️ Posts</a></li>
-                    <li><a href="games/index.php">🎮 Games</a></li>
-                    <li><a href="users/index.php">👥 Users</a></li>
+                    <li><a href="<?php echo $basePath; ?>index.php">📊 Dashboard</a></li>
+                    <li><a href="<?php echo $basePath; ?>posts/index.php">✍️ Posts</a></li>
+                    <li><a href="<?php echo $basePath; ?>games/index.php">🎮 Games</a></li>
+                    <li><a href="<?php echo $basePath; ?>users/index.php">👥 Users</a></li>
                 </ul>
             </div>
-            <a href="index.php" class="btn btn-ghost text-xl font-bold">
+            <a href="<?php echo $basePath; ?>index.php" class="btn btn-ghost text-xl font-bold">
                 🎮 Capibara Admin
             </a>
         </div>
         
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
-                <li><a href="index.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>">📊 Dashboard</a></li>
-                <li><a href="posts/index.php">✍️ Posts</a></li>
-                <li><a href="games/index.php">🎮 Games</a></li>
-                <li><a href="users/index.php">👥 Users</a></li>
+                <li><a href="<?php echo $basePath; ?>index.php">📊 Dashboard</a></li>
+                <li><a href="<?php echo $basePath; ?>posts/index.php">✍️ Posts</a></li>
+                <li><a href="<?php echo $basePath; ?>games/index.php">🎮 Games</a></li>
+                <li><a href="<?php echo $basePath; ?>users/index.php">👥 Users</a></li>
             </ul>
         </div>
         
@@ -61,8 +68,8 @@
                 </button>
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                     <li class="menu-title"><?php echo htmlspecialchars($_SESSION['username']); ?></li>
-                    <li><a href="../index.php" target="_blank">🌐 Ver Sitio</a></li>
-                    <li><a href="logout.php" class="text-error">🚪 Salir</a></li>
+                    <li><a href="<?php echo $publicPath; ?>index.php" target="_blank">🌐 Ver Sitio</a></li>
+                    <li><a href="<?php echo $basePath; ?>logout.php" class="text-error">🚪 Salir</a></li>
                 </ul>
             </div>
         </div>
