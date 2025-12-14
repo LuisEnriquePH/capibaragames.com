@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="text-center text-green mb-2"><?php echo $success; ?></p>
         <?php else: ?>
 
-        <form action="create.php" method="POST" class="contact-form" enctype="multipart/form-data">
+        <form id="admin-form" action="create.php" method="POST" class="contact-form" enctype="multipart/form-data">
             <?php csrfField(); ?>
             <div class="form__group">
                 <label class="form__label">Título del Juego</label>
@@ -121,5 +121,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
     </main>
 
+    <script src="../js/admin.js"></script>
 </body>
 </html>

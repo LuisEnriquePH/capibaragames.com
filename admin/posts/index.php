@@ -72,7 +72,7 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <td class="text-grey"><?php echo date("d/m/Y", strtotime($post['created_at'])); ?></td>
                                 <td>
                                     <a href="edit.php?id=<?php echo $post['id']; ?>" class="text-highlight mr-2">Editar</a>
-                                    <a href="delete.php?id=<?php echo $post['id']; ?>&csrf_token=<?php echo htmlspecialchars(generateCSRFToken()); ?>" class="text-white" data-delete-confirm data-item-name="<?php echo htmlspecialchars($${file##*/}['title'] ?? $${file##*/}['username'] ?? 'elemento'); ?>"('¿Seguro que quieres borrar este artículo?');">Borrar</a>
+                                    <a href="delete.php?id=<?php echo $post['id']; ?>&csrf_token=<?php echo htmlspecialchars(generateCSRFToken()); ?>" class="text-white" data-delete-confirm data-item-name="<?php echo htmlspecialchars($post['title']); ?>">Borrar</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

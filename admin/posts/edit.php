@@ -139,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="text-center text-green mb-2"><?php echo $success; ?></p>
         <?php endif; ?>
 
-        <form action="edit.php?id=<?php echo $post['id']; ?>
+        <form id="admin-form" action="edit.php?id=<?php echo $post['id']; ?>
             <?php csrfField(); ?>" method="POST" class="contact-form" enctype="multipart/form-data">
             <div class="form__group">
                 <label class="form__label">Título</label>
@@ -212,5 +212,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             document.getElementById('content-editor').value = easyMDE.value();
         });
     </script>
+    <script src="../js/admin.js"></script>
 </body>
 </html>

@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="text-center text-green mb-2"><?php echo $success; ?></p>
         <?php else: ?>
 
-        <form action="create.php" method="POST" class="contact-form" enctype="multipart/form-data">
+        <form id="post-form" action="create.php" method="POST" class="contact-form" enctype="multipart/form-data">
             <?php csrfField(); ?>
             <div class="form__group">
                 <label class="form__label">Título</label>
@@ -159,6 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- EasyMDE JS -->
     <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+    <script src="../js/admin.js"></script>
     <script>
         var easyMDE = new EasyMDE({ 
             element: document.getElementById('content-editor'),
@@ -180,14 +181,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 fail: "Error al subir imagen."
             },
             sideBySideFullscreen: false,
-            previewClass: "editor-preview", // Usar nuestra clase personalizada
+            previewClass: "editor-preview",
         });
 
         // Asegurar que el contenido se envíe correctamente
         document.querySelector('form').addEventListener('submit', function() {
-            // Actualiza el textarea original con el valor del editor
             document.getElementById('content-editor').value = easyMDE.value();
         });
+        
+        // Enable autosave for this form
+        const autosave = new AutoSave('post-form', 'draft_post_create', 30000);
     </script>
 </body>
 </html>
