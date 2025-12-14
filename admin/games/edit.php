@@ -3,6 +3,7 @@ require '../includes/auth.php';
 require '../includes/upload.php';
 require '../../includes/db.php';
 
+$pageTitle = 'Editar Juego';
 
 $error = '';
 $success = '';
@@ -17,7 +18,9 @@ $id = $_GET['id'];
 // Obtener datos actuales
 $stmt = $pdo->prepare("SELECT * FROM games WHERE id = :id");
 $stmt->execute(['id' => $id]);
-$game = $stmt->fetch(PDO::FETCH_ASSOC);
+$game = $stmt->fetch(PDO::FETCH_ASS
+
+OC);
 
 if (!$game) {
     die("Juego no encontrado.");
@@ -45,10 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!$error && !empty($title) && !empty($release_date)) {
         try {
-            // Si la imagen está vacía (ni subida ni URL), mantenemos la anterior (opcional, aunque aquí parece que se sobreescribe)
-            // Mejor lógica: si $image_url está vacío, no lo actualizamos O asumimos que el usuario lo borró.
-            // En este caso, el usuario ve el valor actual en el input, así que si lo deja, se envía.
-            
             $sql = "UPDATE games SET title = :title, description = :description, image_url = :image_url, itchio_url = :itchio_url, release_date = :release_date WHERE id = :id";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([
@@ -59,98 +58,195 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'release_date' => $release_date,
                 'id' => $id
             ]);
+            $success = "Juego actualizado exitosamente. <a href='index.php' class='link link-primary'>Volver a la lista</a>";
             
-            // Recargar datos
+            // Reload data
             $stmt = $pdo->prepare("SELECT * FROM games WHERE id = :id");
             $stmt->execute(['id' => $id]);
             $game = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            $success = "Juego actualizado correctamente.";
         } catch (PDOException $e) {
             $error = "Error al actualizar: " . $e->getMessage();
         }
-    } else {
+    } else if (!$error) {
         $error = "El título y la fecha son obligatorios.";
     }
 }
+
+include '../includes/header-admin.php';
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Juego - Capibara Admin</title>
-    
-    <link rel="stylesheet" href="../../css/base.css">
-    <link rel="stylesheet" href="../../css/layout.css">
-    <link rel="stylesheet" href="../../css/components.css">
-    <link rel="stylesheet" href="../../css/pages.css">
-    <link rel="stylesheet" href="../../css/utilities.css">
-</head>
-<body class="admin-page">
 
-    <header class="header admin-header">
-        <div class="header__container admin-header__container">
-            <div class="header__logo">
-                <a href="../index.php" class="header__logo-text text-highlight">CAPIBARA ADMIN</a>
-            </div>
-            <nav class="header__nav d-flex align-center admin-nav-gap">
-                <a href="index.php" class="btn btn--secondary admin-btn-sm">Cancelar</a>
-            </nav>
-        </div>
-    </header>
+<!-- Page Header -->
+<div class="flex justify-between items-center mb-6">
+    <div>
+        <h1 class="text-3xl font-bold">Editar Juego</h1>
+        <p class="text-base-content/60">ID: <?php echo $game['id']; ?></p>
+    </div>
+    <a href="index.php" class="btn btn-ghost">
+        ← Volver
+    </a>
+</div>
 
-    <main class="post-container max-w-800">
-        <h1 class="page-header__title mb-2 text-center">EDITAR JUEGO</h1>
+<!-- Messages -->
+<?php if ($error): ?>
+    <div class="alert alert-error mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span><?php echo $error; ?></span>
+    </div>
+<?php endif; ?>
 
-        <?php if ($error): ?>
-            <p class="text-center text-error"><?php echo $error; ?></p>
-        <?php endif; ?>
+<?php if ($success): ?>
+    <div class="alert alert-success mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span><?php echo $success; ?></span>
+    </div>
+<?php endif; ?>
 
-        <?php if ($success): ?>
-            <p class="text-center text-green mb-2"><?php echo $success; ?></p>
-        <?php endif; ?>
-
-        <form id="admin-form" action="edit.php?id=<?php echo $game['id']; ?>" method="POST" class="contact-form" enctype="multipart/form-data">
+<!-- Form Card -->
+<div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+        <form method="POST" enctype="multipart/form-data" class="space-y-6">
             <?php csrfField(); ?>
-            <div class="form__group">
-                <label class="form__label">Título del Juego</label>
-                <input type="text" name="title" class="form__input" required value="<?php echo htmlspecialchars($game['title']); ?>">
+            
+            <!-- Title -->
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text font-semibold">Título del Juego *</span>
+                </label>
+                <input 
+                    type="text" 
+                    name="title" 
+                    value="<?php echo htmlspecialchars($game['title']); ?>"
+                    placeholder="Ej: Cyber Capibara 2077" 
+                    class="input input-bordered w-full"
+                    required
+                />
             </div>
 
-
-            <div class="form__group">
-                <label class="form__label">Descripción Corta</label>
-                <textarea name="description" class="form__textarea" rows="4"><?php echo htmlspecialchars($game['description']); ?></textarea>
+            <!-- Description -->
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text font-semibold">Descripción</span>
+                    <span class="label-text-alt">Breve descripción del juego</span>
+                </label>
+                <textarea 
+                    name="description" 
+                    class="textarea textarea-bordered h-24" 
+                    placeholder="De qué trata el juego..."
+                ><?php echo htmlspecialchars($game['description']); ?></textarea>
             </div>
 
-            <div class="form__group">
-                <label class="form__label">Actualizar Portada (Subir Nuevo)</label>
-                <input type="file" name="image_file" class="form__input" accept="image/*">
-            </div>
-
-            <div class="form__group">
-                <label class="form__label">O pegar URL de Imagen</label>
-                <input type="text" name="image_url" class="form__input" value="<?php echo htmlspecialchars($game['image_url']); ?>">
-                <?php if($game['image_url']): ?>
-                    <p class="text-light-grey fs-12 mt-1">Actual: <?php echo htmlspecialchars($game['image_url']); ?></p>
+            <!-- Image Upload -->
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text font-semibold">Imagen de Portada</span>
+                </label>
+                
+                <!-- Current Image Preview -->
+                <?php if (!empty($game['image_url'])): ?>
+                    <div class="mb-4">
+                        <p class="text-sm text-base-content/60 mb-2">Imagen actual:</p>
+                        <img src="../../<?php echo htmlspecialchars($game['image_url']); ?>" 
+                             alt="Current image" 
+                             class="max-w-xs rounded-lg shadow-lg">
+                    </div>
                 <?php endif; ?>
+                
+                <div class="flex gap-4">
+                    <div class="flex-1">
+                        <input 
+                            type="text" 
+                            name="image_url" 
+                            id="game-image"
+                            value="<?php echo htmlspecialchars($game['image_url']); ?>"
+                            placeholder="URL de la imagen o sube un archivo" 
+                            class="input input-bordered w-full"
+                        />
+                    </div>
+                    <label for="image-file-input" class="btn btn-outline cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        Cambiar Imagen
+                    </label>
+                    <input 
+                        type="file" 
+                        name="image_file" 
+                        id="image-file-input"
+                        accept="image/*" 
+                        class="hidden"
+                        onchange="previewImage(this)"
+                    />
+                </div>
+                <!-- New Image Preview -->
+                <div id="game-image-preview" class="mt-4"></div>
             </div>
 
-            <div class="form__group">
-                <label class="form__label">Enlace a Itch.io</label>
-                <input type="url" name="itchio_url" class="form__input" value="<?php echo htmlspecialchars($game['itchio_url']); ?>">
+            <!-- Itch.io URL -->
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text font-semibold">Enlace a Itch.io</span>
+                </label>
+                <input 
+                    type="url" 
+                    name="itchio_url" 
+                    value="<?php echo htmlspecialchars($game['itchio_url']); ?>"
+                    placeholder="https://tu-usuario.itch.io/tu-juego" 
+                    class="input input-bordered w-full"
+                />
             </div>
 
-            <div class="form__group">
-                <label class="form__label">Fecha de Lanzamiento</label>
-                <input type="date" name="release_date" class="form__input" required value="<?php echo htmlspecialchars($game['release_date']); ?>">
+            <!-- Release Date -->
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text font-semibold">Fecha de Lanzamiento *</span>
+                </label>
+                <input 
+                    type="date" 
+                    name="release_date" 
+                    value="<?php echo htmlspecialchars($game['release_date']); ?>"
+                    class="input input-bordered w-full"
+                    required
+                />
             </div>
 
-            <button type="submit" class="btn btn--accent w-100">ACTUALIZAR JUEGO</button>
+            <!-- Submit Button -->
+            <div class="card-actions justify-end pt-4 border-t">
+                <a href="index.php" class="btn btn-ghost">Cancelar</a>
+                <button type="submit" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    Actualizar Juego
+                </button>
+            </div>
         </form>
-    </main>
+    </div>
+</div>
 
-    <script src="../js/admin.js"></script>
-</body>
-</html>
+<script>
+// Image preview function
+function previewImage(input) {
+    const preview = document.getElementById('game-image-preview');
+    preview.innerHTML = '';
+    
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.innerHTML = `
+                <div class="relative inline-block">
+                    <img src="${e.target.result}" class="max-w-xs rounded-lg shadow-lg" alt="Preview">
+                    <div class="mt-2 text-sm text-success">✓ Nueva imagen seleccionada: ${input.files[0].name}</div>
+                </div>
+            `;
+            document.getElementById('game-image').value = input.files[0].name;
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>
+
+<?php include '../includes/footer-admin.php'; ?>
