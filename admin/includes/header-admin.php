@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es" data-theme="capibara-admin">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +14,72 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- Custom Tailwind Config with Capibara Brand Colors -->
+    <script>
+        tailwind.config = {
+            daisyui: {
+                themes: [
+                    {
+                        "capibara-admin": {
+                            "primary": "#a855f7",        // Purple (--c-primary)
+                            "primary-content": "#ffffff",
+                            
+                            "secondary": "#ec4899",      // Pink (--c-secondary)
+                            "secondary-content": "#ffffff",
+                            
+                            "accent": "#10b981",         // Green accent
+                            "accent-content": "#ffffff",
+                            
+                            "neutral": "#1e1b2e",        // Dark purple-grey
+                            "neutral-content": "#e0e0e0",
+                            
+                            "base-100": "#0f0a1e",       // Very dark bg (--c-bg-dark)
+                            "base-200": "#1a1332",       // Darker purple
+                            "base-300": "#261d45",       // Medium dark purple
+                            "base-content": "#e0e0e0",   // Light grey text
+                            
+                            "info": "#3b82f6",
+                            "success": "#10b981",
+                            "warning": "#f59e0b",
+                            "error": "#ef4444",
+                        },
+                    },
+                ],
+            },
+        }
+    </script>
+    
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f0a1e 0%, #1a1332 100%);
+        }
+        
+        /* Gradient backgrounds for cards */
+        .card {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(236, 72, 153, 0.05) 100%);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1332;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            border-radius: 5px;
+        }
+        
+        /* Gradient buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+            border: none;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #9333ea 0%, #db2777 100%);
         }
     </style>
 </head>
