@@ -131,17 +131,24 @@ include '../includes/header-admin.php';
                             type="text" 
                             name="image_url" 
                             id="post-image"
-                            placeholder="URL de la imagen" 
+                            placeholder="URL de la imagen o sube un archivo" 
                             class="input input-bordered w-full"
                         />
                     </div>
-                    <label class="btn btn-outline">
+                    <label for="image-file-input" class="btn btn-outline cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
-                        Subir
-                        <input type="file" name="image_file" accept="image/*" class="hidden" />
+                        Subir Imagen
                     </label>
+                    <input 
+                        type="file" 
+                        name="image_file" 
+                        id="image-file-input"
+                        accept="image/*" 
+                        class="hidden"
+                        onchange="previewImage(this)"
+                    />
                 </div>
                 <!-- Image Preview -->
                 <div id="post-image-preview" class="mt-4"></div>
@@ -190,6 +197,27 @@ include '../includes/header-admin.php';
 <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
 
 <script>
+// Image preview function
+function previewImage(input) {
+    const preview = document.getElementById('post-image-preview');
+    preview.innerHTML = '';
+    
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.innerHTML = `
+                <div class="relative inline-block">
+                    <img src="${e.target.result}" class="max-w-xs rounded-lg shadow-lg" alt="Preview">
+                    <div class="mt-2 text-sm text-success">✓ Imagen seleccionada: ${input.files[0].name}</div>
+                </div>
+            `;
+            // Update the URL field with filename for reference
+            document.getElementById('post-image').value = input.files[0].name;
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
 // Initialize EasyMDE
 var easyMDE = new EasyMDE({ 
     element: document.getElementById('content-editor'),
@@ -221,9 +249,6 @@ document.querySelector('form').addEventListener('submit', function() {
 
 // Enable autosave for this form
 const autosave = new AutoSave('post-form', 'draft_post_create', 30000);
-
-// Initialize drag & drop for post image
-new DragDropUpload('post-image', 'post-image-preview');
 </script>
 
 <?php include '../includes/footer-admin.php'; ?>
