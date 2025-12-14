@@ -30,48 +30,106 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Capibara Admin</title>
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/layout.css">
-    <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/utilities.css">
+    
+    <!-- Tailwind CSS + DaisyUI -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.6.0/dist/full.min.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        body { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-        .login-card { max-width: 400px; width: 100%; margin: 20px; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
     </style>
 </head>
-<body class="admin-page">
+<body class="min-h-screen flex items-center justify-center px-4">
 
-    <article class="card login-card">
-        <div class="card__header">
-            <span class="badge badge--game">ADMIN</span>
-        </div>
-        <div class="card__body">
-            <h2 class="card__title text-highlight mb-2">INICIAR SESIÓN</h2>
-            
+    <div class="card w-full max-w-md bg-base-100 shadow-2xl">
+        <div class="card-body">
+            <!-- Header -->
+            <div class="text-center mb-6">
+                <div class="avatar placeholder mb-4">
+                    <div class="bg-primary text-primary-content rounded-full w-20">
+                        <span class="text-3xl">🎮</span>
+                    </div>
+                </div>
+                <h2 class="card-title text-3xl font-bold justify-center mb-2">
+                    Capibara Admin
+                </h2>
+                <p class="text-base-content/60">Iniciar sesión en el panel</p>
+            </div>
+
+            <!-- Error Alert -->
             <?php if($error): ?>
-                <p class="text-center" style="color: #ff6b6b; margin-bottom: 1rem;"><?php echo $error; ?></p>
+                <div class="alert alert-error mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span><?php echo htmlspecialchars($error); ?></span>
+                </div>
             <?php endif; ?>
 
-            <form action="login.php" method="POST">
-                <div style="margin-bottom: 1rem; text-align: left;">
-                    <label style="display: block; margin-bottom: 5px; color: var(--c-green-main); font-family: var(--f-title);">Usuario</label>
-                    <input type="text" name="username" style="width: 100%; padding: 10px; background: #333; border: 1px solid #555; color: white; border-radius: 4px;" required>
-                </div>
-                
-                <div style="margin-bottom: 2rem; text-align: left;">
-                    <label style="display: block; margin-bottom: 5px; color: var(--c-green-main); font-family: var(--f-title);">Contraseña</label>
-                    <input type="password" name="password" style="width: 100%; padding: 10px; background: #333; border: 1px solid #555; color: white; border-radius: 4px;" required>
+            <!-- Login Form -->
+            <form action="login.php" method="POST" class="space-y-4">
+                <!-- Username -->
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-medium">Usuario</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        name="username" 
+                        placeholder="Ingresa tu usuario" 
+                        class="input input-bordered w-full" 
+                        required 
+                        autofocus
+                    />
                 </div>
 
-                <button type="submit" class="btn btn--accent w-100">ENTRAR</button>
+                <!-- Password -->
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-medium">Contraseña</span>
+                    </label>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        placeholder="••••••••" 
+                        class="input input-bordered w-full" 
+                        required
+                    />
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-control mt-6">
+                    <button type="submit" class="btn btn-primary w-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                        </svg>
+                        Iniciar Sesión
+                    </button>
+                </div>
             </form>
+
+            <!-- Footer -->
+            <div class="divider text-xs">Capibara Games</div>
+            <div class="text-center">
+                <a href="../index.php" class="link link-primary text-sm">
+                    ← Volver al sitio
+                </a>
+            </div>
         </div>
-    </article>
+    </div>
 
 </body>
 </html>
