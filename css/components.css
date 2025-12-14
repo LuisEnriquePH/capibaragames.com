@@ -2,22 +2,24 @@
    COMPONENTS (Cards, Badges, Buttons)
    ========================================= */
 
-/* --- CARDS --- */
+/* =========================================
+   CARD COMPONENTS - ENHANCED
+   ========================================= */
 .card {
-    background-color: var(--c-bg-card);
-    border: 2px solid var(--c-green-dark);
+    background: linear-gradient(135deg, rgba(18, 18, 28, 0.95), rgba(30, 30, 46, 0.9));
     border-radius: 8px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     height: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(133, 209, 62, 0.15);
     border-color: var(--c-green-main);
 }
 
@@ -99,14 +101,21 @@
 /* --- BUTTONS --- */
 .btn {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 24px;
     font-family: var(--f-title);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    text-decoration: none;
     border-radius: 4px;
-    text-transform: uppercase;
-    border: 2px solid transparent;
     cursor: pointer;
-    width: 100%;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
 .btn--primary {

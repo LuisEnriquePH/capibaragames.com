@@ -4,12 +4,14 @@
 
 /* --- HEADER & NAV --- */
 .header {
-    background-color: var(--c-bg-card);
-    border-bottom: 2px solid var(--c-green-main);
-    padding: 1rem 0;
     position: sticky;
     top: 0;
-    z-index: 100;
+    background: linear-gradient(90deg, rgba(10, 10, 10, 0.98) 0%, rgba(26, 26, 46, 0.98) 100%);
+    border-bottom: 2px solid var(--c-accent-purple);
+    padding: 1.5rem 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
 }
 
 .header__container {
@@ -132,6 +134,19 @@
 }
 
 /* --- COMMON LAYOUT & GRID --- */
+/* --- GENERAL BODY --- */
+body {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+    background-attachment: fixed;
+    color: var(--c-white);
+    font-family: var(--f-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
 .updates {
     max-width: 1200px;
     margin: 4rem auto;
