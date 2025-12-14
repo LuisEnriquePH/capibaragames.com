@@ -1,85 +1,114 @@
 <?php
 require 'includes/auth.php';
+require '../includes/db.php';
+
+$pageTitle = 'Dashboard';
+
+// Get statistics
+try {
+    $totalPosts = $pdo->query("SELECT COUNT(*) FROM posts")->fetchColumn();
+    $totalGames = $pdo->query("SELECT COUNT(*) FROM games")->fetchColumn();
+    $totalUsers = $pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
+} catch (PDOException $e) {
+    $totalPosts = 0;
+    $totalGames = 0;
+    $totalUsers = 0;
+}
+
+include 'includes/header-admin.php';
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Capibara Admin</title>
-    
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/layout.css">
-    <link rel="stylesheet" href="../css/components.css">
-    <link rel="stylesheet" href="../css/pages.css">
-    <link rel="stylesheet" href="../css/utilities.css">
-    <link rel="stylesheet" href="../css/admin.css">
-</head>
-<body class="admin-page">
 
-    <!-- Admin Header Reusing Components -->
-    <header class="header admin-header">
-        <div class="header__container admin-header__container">
-            <div class="header__logo">
-                <span class="header__logo-text text-highlight">CAPIBARA ADMIN</span>
+<!-- Page Header -->
+<div class="mb-8">
+    <h1 class="text-4xl font-bold mb-2">Panel de Control</h1>
+    <p class="text-base-content/60">Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?>!</p>
+</div>
+
+<!-- Stats Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <!-- Posts Stat -->
+    <div class="stats shadow">
+        <div class="stat">
+            <div class="stat-figure text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
             </div>
-            
-            <button class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-
-            <nav class="header__nav d-flex align-center admin-nav-gap">
-                <span class="text-white fs-1">Hola, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
-                <a href="../index.php" target="_blank" class="btn btn--secondary admin-btn-sm">Ver Web</a>
-                <a href="logout.php" class="btn btn--primary admin-btn-sm">Salir</a>
-            </nav>
+            <div class="stat-title">Posts</div>
+            <div class="stat-value text-primary"><?php echo $totalPosts; ?></div>
+            <div class="stat-desc">Total de artículos</div>
         </div>
-    </header>
+    </div>
 
-    <main class="post-container max-w-1000">
-        <h1 class="page-header__title mb-2 text-center">PANEL DE CONTROL</h1>
-        
-        <div class="games-grid">
-            <!-- Card: Manage Posts -->
-            <article class="card">
-                <div class="card__body justify-center">
-                    <span class="admin-dashboard-icon">✍️</span>
-                    <h2 class="card__title">BLOG POSTS</h2>
-                    <p class="mb-2 text-light-grey">Publicar nuevas entradas o editar las existentes.</p>
-                    <a href="posts/index.php" class="btn btn--accent w-100">GESTIONAR BLOG</a>
-                </div>
-            </article>
-
-            <!-- Card: Manage Games -->
-            <article class="card">
-                <div class="card__body justify-center">
-                    <span class="admin-dashboard-icon">🎮</span>
-                    <h2 class="card__title">JUEGOS</h2>
-                    <p class="mb-2 text-light-grey">Añadir nuevos proyectos a tu portafolio.</p>
-                    <a href="games/index.php" class="btn btn--accent w-100">GESTIONAR JUEGOS</a>
-                </div>
-            </article>
-
-            <!-- Card: Manage Users -->
-            <article class="card">
-                <div class="card__body justify-center">
-                    <span class="admin-dashboard-icon">👥</span>
-                    <h2 class="card__title">USUARIOS</h2>
-                    <p class="mb-2 text-light-grey">Gestionar accesos y roles.</p>
-                    <a href="users/index.php" class="btn btn--accent w-100">GESTIONAR USUARIOS</a>
-                </div>
-            </article>
+    <!-- Games Stat -->
+    <div class="stats shadow">
+        <div class="stat">
+            <div class="stat-figure text-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                </svg>
+            </div>
+            <div class="stat-title">Games</div>
+            <div class="stat-value text-secondary"><?php echo $totalGames; ?></div>
+            <div class="stat-desc">Total de juegos</div>
         </div>
-    </main>
-    
-    <script src="../admin/js/admin.js"></script>
-    <script>
-        document.getElementById('mobile-menu').addEventListener('click', function() {
-            document.querySelector('.header__nav').classList.toggle('active');
-        });
-    </script>
+    </div>
 
-</body>
-</html>
+    <!-- Users Stat -->
+    <div class="stats shadow">
+        <div class="stat">
+            <div class="stat-figure text-accent">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+            </div>
+            <div class="stat-title">Users</div>
+            <div class="stat-value text-accent"><?php echo $totalUsers; ?></div>
+            <div class="stat-desc">Total de usuarios</div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="mb-8">
+    <h2 class="text-2xl font-bold mb-4">Acciones Rápidas</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Posts Card -->
+        <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+            <div class="card-body items-center text-center">
+                <div class="text-6xl mb-4">✍️</div>
+                <h3 class="card-title">Blog Posts</h3>
+                <p>Publicar nuevas entradas o editar las existentes.</p>
+                <div class="card-actions justify-center mt-4">
+                    <a href="posts/index.php" class="btn btn-primary">Gestionar Blog</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Games Card -->
+        <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+            <div class="card-body items-center text-center">
+                <div class="text-6xl mb-4">🎮</div>
+                <h3 class="card-title">Juegos</h3>
+                <p>Añadir nuevos proyectos a tu portafolio.</p>
+                <div class="card-actions justify-center mt-4">
+                    <a href="games/index.php" class="btn btn-secondary">Gestionar Juegos</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Users Card -->
+        <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow">
+            <div class="card-body items-center text-center">
+                <div class="text-6xl mb-4">👥</div>
+                <h3 class="card-title">Usuarios</h3>
+                <p>Gestionar accesos y roles.</p>
+                <div class="card-actions justify-center mt-4">
+                    <a href="users/index.php" class="btn btn-accent">Gestionar Usuarios</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php include 'includes/footer-admin.php'; ?>
