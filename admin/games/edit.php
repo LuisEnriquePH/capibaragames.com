@@ -1,5 +1,6 @@
 <?php
 require '../includes/auth.php';
+require '../includes/csrf.php';
 require '../includes/upload.php';
 require '../../includes/db.php';
 
@@ -23,6 +24,9 @@ if (!$game) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Verify CSRF token
+    requireCSRF();
+
     $title = trim($_POST['title']);
     $description = trim($_POST['description']);
     $image_url = trim($_POST['image_url']);
@@ -107,7 +111,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="text-center text-green mb-2"><?php echo $success; ?></p>
         <?php endif; ?>
 
-        <form action="edit.php?id=<?php echo $game['id']; ?>" method="POST" class="contact-form" enctype="multipart/form-data">
+        <form action="edit.php?id=<?php echo $game['id']; ?>
+            <?php csrfField(); ?>" method="POST" class="contact-form" enctype="multipart/form-data">
             <div class="form__group">
                 <label class="form__label">Título del Juego</label>
                 <input type="text" name="title" class="form__input" required value="<?php echo htmlspecialchars($game['title']); ?>">

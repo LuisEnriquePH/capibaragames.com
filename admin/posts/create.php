@@ -1,5 +1,6 @@
 <?php
 require '../includes/auth.php';
+require '../includes/csrf.php';
 require '../includes/upload.php';
 require '../../includes/db.php';
 
@@ -7,6 +8,9 @@ $error = '';
 $success = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Verify CSRF token
+    requireCSRF();
+
     $title = trim($_POST['title']);
     $excerpt = trim($_POST['excerpt']);
     $content = $_POST['content'];
@@ -111,6 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php else: ?>
 
         <form action="create.php" method="POST" class="contact-form" enctype="multipart/form-data">
+            <?php csrfField(); ?>
             <div class="form__group">
                 <label class="form__label">Título</label>
                 <input type="text" name="title" class="form__input" required placeholder="Ej: Mi primer devlog">

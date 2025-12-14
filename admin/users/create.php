@@ -1,11 +1,15 @@
 <?php
 require '../includes/auth.php';
+require '../includes/csrf.php';
 require '../../includes/db.php';
 
 $error = '';
 $success = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Verify CSRF token
+    requireCSRF();
+    
     $username = trim($_POST['username']);
     $role = $_POST['role'];
     $password = $_POST['password'];
@@ -76,6 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php else: ?>
 
         <form action="create.php" method="POST" class="contact-form">
+            <?php csrfField(); ?>
             <div class="form__group">
                 <label class="form__label">Usuario</label>
                 <input type="text" name="username" class="form__input" required placeholder="Ej: editor1">

@@ -74,6 +74,7 @@ require 'includes/auth.php';
         </div>
     </main>
     
+    <script src="../admin/js/admin.js"></script>
     <script>
         document.getElementById('mobile-menu').addEventListener('click', function() {
             document.querySelector('.header__nav').classList.toggle('active');

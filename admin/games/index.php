@@ -69,7 +69,7 @@ $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <td class="text-grey"><?php echo date("d/m/Y", strtotime($game['release_date'])); ?></td>
                                 <td>
                                     <a href="edit.php?id=<?php echo $game['id']; ?>" class="text-highlight mr-2">Editar</a>
-                                    <a href="delete.php?id=<?php echo $game['id']; ?>" class="text-white" onclick="return confirm('¿Seguro que quieres eliminar este juego?');">Borrar</a>
+                                    <a href="delete.php?id=<?php echo $game['id']; ?>&csrf_token=<?php echo htmlspecialchars(generateCSRFToken()); ?>" class="text-white" data-delete-confirm data-item-name="<?php echo htmlspecialchars($${file##*/}['title'] ?? $${file##*/}['username'] ?? 'elemento'); ?>"('¿Seguro que quieres eliminar este juego?');">Borrar</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

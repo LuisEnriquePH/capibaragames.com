@@ -68,7 +68,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td>
                                 <a href="edit.php?id=<?php echo $u['id']; ?>" class="text-highlight mr-2">Editar</a>
                                 <?php if($u['username'] !== $_SESSION['username']): ?>
-                                    <a href="delete.php?id=<?php echo $u['id']; ?>" class="text-white" onclick="return confirm('¿Seguro que quieres eliminar a este usuario?');">Borrar</a>
+                                    <a href="delete.php?id=<?php echo $u['id']; ?>&csrf_token=<?php echo htmlspecialchars(generateCSRFToken()); ?>" class="text-white" data-delete-confirm data-item-name="<?php echo htmlspecialchars($${file##*/}['title'] ?? $${file##*/}['username'] ?? 'elemento'); ?>"('¿Seguro que quieres eliminar a este usuario?');">Borrar</a>
                                 <?php endif; ?>
                             </td>
                         </tr>
