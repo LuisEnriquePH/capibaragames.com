@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# 1. Si la solicitud no es un archivo ni un directorio existente
+
+# 2. Y existe un archivo con el mismo nombre pero terminación .php
+RewriteCond %{REQUEST_FILENAME}.php -f
+
+# 3. Reescribir internamente la solicitud para añadir .php
+RewriteRule ^(.*)$ $1.php [L,QSA]

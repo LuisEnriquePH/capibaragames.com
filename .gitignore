@@ -1,7 +1,7 @@
 # --- Seguridad (Credenciales) ---
 /config/db.php
 .env
-.htaccess
+# .htaccess (Permitir para URLs amigables)
 
 # --- Dependencias (Se instalan, no se suben) ---
 /vendor/

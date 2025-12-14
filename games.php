@@ -25,10 +25,10 @@ try {
         </div>
     <?php else: ?>
         
-        <div class="games-grid">
+        <div class="cards-grid">
             
             <?php foreach ($games as $game): ?>
-                <article class="card card--game card--compact">
+                <article class="card card--game">
                     <div class="card__header">
                         <span class="badge badge--game">JUEGO</span>
                     </div>
@@ -57,7 +57,7 @@ try {
                     </div>
                 </article>
             <?php endforeach; ?>
-            </div>
+        </div>
 
     <?php endif; ?>
 

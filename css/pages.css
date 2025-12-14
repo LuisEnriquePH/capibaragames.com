@@ -183,19 +183,7 @@
     /* Estilo similar a post-container pero más ancho */
 }
 
-.games-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    /* Cambiado a auto-fit y reducido a 200px para evitar columna única */
-    gap: 20px;
-    width: 100%;
-    /* Asegurar que llene el contenedor */
-    padding-bottom: 40px;
-}
-
-@media (max-width: 768px) {
-    .games-grid {
-        grid-template-columns: 1fr;
-        /* Una sola columna en móvil */
-    }
+/* Override para Games: usar auto-fill para que NO se estiren si hay pocos juegos */
+.games-container .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }

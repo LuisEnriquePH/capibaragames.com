@@ -122,4 +122,45 @@
     color: white;
     border-radius: 4px;
     margin-left: 5px;
+    margin-left: 5px;
+}
+
+/* --- NEW UTILITIES (Replaces Inline Styles) --- */
+.admin-nav-gap {
+    gap: 20px;
+}
+
+.admin-btn-sm {
+    font-size: 1rem;
+    padding: 5px 10px;
+}
+
+.max-w-600 {
+    max-width: 600px;
+}
+
+.max-w-800 {
+    max-width: 800px;
+}
+
+.max-w-1000 {
+    max-width: 1000px;
+}
+
+.admin-dashboard-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    display: block;
+    /* Ensure it behaves correctly */
+}
+
+.text-error {
+    color: #ff6b6b;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.bg-dark-input {
+    background: var(--c-bg-dark);
+    color: white;
 }

@@ -30,22 +30,22 @@ require 'includes/auth.php';
                 <span class="bar"></span>
             </button>
 
-            <nav class="header__nav d-flex align-center" style="gap: 20px;">
+            <nav class="header__nav d-flex align-center admin-nav-gap">
                 <span class="text-white fs-1">Hola, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
-                <a href="../index.php" target="_blank" class="btn btn--secondary" style="font-size: 1rem; padding: 5px 10px;">Ver Web</a>
-                <a href="logout.php" class="btn btn--primary" style="font-size: 1rem; padding: 5px 10px;">Salir</a>
+                <a href="../index.php" target="_blank" class="btn btn--secondary admin-btn-sm">Ver Web</a>
+                <a href="logout.php" class="btn btn--primary admin-btn-sm">Salir</a>
             </nav>
         </div>
     </header>
 
-    <main class="post-container" style="max-width: 1000px;">
+    <main class="post-container max-w-1000">
         <h1 class="page-header__title mb-2 text-center">PANEL DE CONTROL</h1>
         
         <div class="games-grid">
             <!-- Card: Manage Posts -->
             <article class="card">
                 <div class="card__body justify-center">
-                    <span style="font-size: 4rem; margin-bottom: 1rem;">✍️</span>
+                    <span class="admin-dashboard-icon">✍️</span>
                     <h2 class="card__title">BLOG POSTS</h2>
                     <p class="mb-2 text-light-grey">Publicar nuevas entradas o editar las existentes.</p>
                     <a href="posts/index.php" class="btn btn--accent w-100">GESTIONAR BLOG</a>
@@ -55,7 +55,7 @@ require 'includes/auth.php';
             <!-- Card: Manage Games -->
             <article class="card">
                 <div class="card__body justify-center">
-                    <span style="font-size: 4rem; margin-bottom: 1rem;">🎮</span>
+                    <span class="admin-dashboard-icon">🎮</span>
                     <h2 class="card__title">JUEGOS</h2>
                     <p class="mb-2 text-light-grey">Añadir nuevos proyectos a tu portafolio.</p>
                     <a href="games/index.php" class="btn btn--accent w-100">GESTIONAR JUEGOS</a>
@@ -65,7 +65,7 @@ require 'includes/auth.php';
             <!-- Card: Manage Users -->
             <article class="card">
                 <div class="card__body justify-center">
-                    <span style="font-size: 4rem; margin-bottom: 1rem;">👥</span>
+                    <span class="admin-dashboard-icon">👥</span>
                     <h2 class="card__title">USUARIOS</h2>
                     <p class="mb-2 text-light-grey">Gestionar accesos y roles.</p>
                     <a href="users/index.php" class="btn btn--accent w-100">GESTIONAR USUARIOS</a>

@@ -220,3 +220,15 @@
     border: 2px solid var(--c-green-dark);
     margin-bottom: 2rem;
 }
+
+.w-auto {
+    width: auto;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+.mr-2 {
+    margin-right: 10px;
+}

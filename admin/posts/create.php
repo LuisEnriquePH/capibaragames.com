@@ -93,17 +93,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="header__logo">
                 <a href="../index.php" class="header__logo-text text-highlight">CAPIBARA ADMIN</a>
             </div>
-            <nav class="header__nav d-flex align-center" style="gap: 20px;">
-                <a href="index.php" class="btn btn--secondary" style="font-size: 1rem; padding: 5px 10px;">Cancelar</a>
+            <nav class="header__nav d-flex align-center admin-nav-gap">
+                <a href="index.php" class="btn btn--secondary admin-btn-sm">Cancelar</a>
             </nav>
         </div>
     </header>
 
-    <main class="post-container" style="max-width: 800px;">
+    <main class="post-container max-w-800">
         <h1 class="page-header__title mb-2 text-center">NUEVO ARTÍCULO</h1>
 
         <?php if ($error): ?>
-            <p class="text-center" style="color: #ff6b6b; margin-bottom: 1rem;"><?php echo $error; ?></p>
+            <p class="text-center text-error"><?php echo $error; ?></p>
         <?php endif; ?>
 
         <?php if ($success): ?>

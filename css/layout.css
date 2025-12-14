@@ -111,7 +111,8 @@
     position: relative;
     z-index: 3;
     text-align: center;
-    padding: 20px;
+    padding: 0;
+    /* Eliminado padding casi por completo */
 }
 
 .hero__title {
@@ -261,5 +262,93 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* =========================================
+   HOMEPAGE SPECIFIC LAYOUT
+   ========================================= */
+
+/* --- VIDEO BACKGROUND (Fixed) --- */
+#home-video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+#home-video-bg .hero__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#home-video-bg .hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    /* Restaurado a transparente oscuro */
+    backdrop-filter: blur(2px);
+    z-index: 2;
+    /* Mayor que el video (z-index: 1) para que se vea */
+}
+
+/* --- MAIN CONTENT WRAPPER --- */
+.home-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centrar verticalmente para "subir" las tarjetas */
+    /* Empujar contenido hacia abajo eliminado */
+    padding-bottom: 50px;
+    padding-top: 40px;
+    /* Reducido de 100px para acercarlo al header */
+}
+
+/* Ajustes a la sección interna de Updates en Home */
+.home-content .updates {
+    margin: 0 auto;
+    /* Quitar el margen grande anterior */
+    padding-top: 1rem;
+    /* "Pegarlas" un poco más (50% de 2rem) */
+}
+
+.home-content .hero__content {
+    margin-bottom: 3rem;
+    /* Margen fijo en vez de auto para mantenerlos juntos */
+    /* Título arriba, o centrado si hay espacio */
+    padding-top: 0;
+}
+
+/* Forzar color blanco y sombras en Home para contraste con video */
+.home-content .section-title {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* --- MOBILE LAYOUT (Home Only) --- */
+@media (max-width: 900px) {
+    /* Eliminado scroll horizontal, volver a stack vertical normal */
+
+    .home-content {
+        justify-content: center;
+        /* Centrar verticalmente en móvil si cabe */
+        padding-bottom: 20px;
+    }
+
+    .home-content .hero__content {
+        margin-bottom: 2rem;
     }
 }

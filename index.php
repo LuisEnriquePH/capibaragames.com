@@ -19,18 +19,20 @@ try {
 }
 ?>
 
-    <section class="hero">
+    <!-- Video de Fondo (Solo Home) -->
+    <div id="home-video-bg">
         <div class="hero__overlay"></div>
         <video class="hero__video" src="assets/uploads/videos/0321.mp4" autoplay loop muted playsinline></video>
+    </div>
+
+    <!-- Contenido Principal Home (Sobre el video) -->
+    <div class="home-content">
         
         <div class="hero__content">
-            <h1 class="hero__title">CAPIBARA GAMES</h1>
-            <h2 class="hero__slogan">DISFRUTO LA VIDA JUGANDO Y HACIENDO JUEGOS</h2>
+            <h1 class="hero__title">ÚLTIMAS NOVEDADES</h1>
         </div>
-    </section>
 
-    <section class="updates" id="updates">
-        <h2 class="section-title">ÚLTIMAS NOVEDADES</h2>
+        <section class="updates" id="updates">
         
         <div class="cards-grid">
             
@@ -130,5 +132,7 @@ try {
 
         </div>
     </section>
+
+    </div> <!-- Fin .home-content -->
 
 <?php include 'includes/footer.php'; ?>

@@ -49,25 +49,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../../css/components.css">
     <link rel="stylesheet" href="../../css/pages.css">
     <link rel="stylesheet" href="../../css/utilities.css">
+    <link rel="stylesheet" href="../../css/admin.css">
 </head>
 <body>
 
-    <header class="header" style="padding: 1rem 0; background: var(--c-bg-card); border-bottom: 2px solid var(--c-accent-purple);">
-        <div class="header__container" style="justify-content: space-between;">
+    <header class="header admin-header">
+        <div class="header__container admin-header__container">
             <div class="header__logo">
                 <a href="../index.php" class="header__logo-text text-highlight">CAPIBARA ADMIN</a>
             </div>
-            <nav class="header__nav d-flex align-center" style="gap: 20px;">
-                <a href="index.php" class="btn btn--secondary" style="font-size: 1rem; padding: 5px 10px;">Cancelar</a>
+            <nav class="header__nav d-flex align-center admin-nav-gap">
+                <a href="index.php" class="btn btn--secondary admin-btn-sm">Cancelar</a>
             </nav>
         </div>
     </header>
 
-    <main class="post-container" style="max-width: 600px;">
+    <main class="post-container max-w-600">
         <h1 class="page-header__title mb-2 text-center">NUEVO USUARIO</h1>
 
         <?php if ($error): ?>
-            <p class="text-center" style="color: #ff6b6b; margin-bottom: 1rem;"><?php echo $error; ?></p>
+            <p class="text-center text-error"><?php echo $error; ?></p>
         <?php endif; ?>
 
         <?php if ($success): ?>
@@ -87,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="form__group">
                 <label class="form__label">Rol</label>
-                <select name="role" class="form__input" style="background:var(--c-bg-dark); color:white;">
+                <select name="role" class="form__input bg-dark-input">
                     <option value="editor">Editor</option>
                     <option value="admin">Administrador</option>
                 </select>
