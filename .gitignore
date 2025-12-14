@@ -15,6 +15,9 @@ Thumbs.db
 /assets/uploads/*
 !/assets/uploads/.htaccess
 !/assets/uploads/index.html
+!/assets/uploads/videos
+/assets/uploads/videos/*
+!/assets/uploads/videos/0321.mp4
 
 .env
 config/db.php
