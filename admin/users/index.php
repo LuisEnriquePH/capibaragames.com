@@ -36,12 +36,19 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <main class="post-container max-w-1000">
         <div class="admin-page-header">
+        </div>
+
+        <!-- Search and Filters -->
+        <div class="admin-filters mb-2">
+            <input type="search" id="search-users" class="admin-search-input" placeholder="🔍 Buscar usuario..." onkeyup="filterTable(this, 'users-table')">
+        </div>
+
             <h1 class="page-header__title m-0">USUARIOS DEL SISTEMA</h1>
             <a href="create.php" class="btn btn--accent w-auto">+ NUEVO USUARIO</a>
         </div>
 
         <div class="table-responsive">
-            <table class="admin-table">
+            <table class="admin-table" id="users-table">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -78,5 +85,6 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </main>
 
+    <script src="../js/admin.js"></script>
 </body>
 </html>

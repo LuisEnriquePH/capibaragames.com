@@ -36,6 +36,13 @@ $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <main class="post-container max-w-1000">
         <div class="admin-page-header">
+        </div>
+
+        <!-- Search and Filters -->
+        <div class="admin-filters mb-2">
+            <input type="search" id="search-games" class="admin-search-input" placeholder="🔍 Buscar juego..." onkeyup="filterTable(this, 'games-table')">
+        </div>
+
             <h1 class="page-header__title m-0">JUEGOS PUBLICADOS</h1>
             <a href="create.php" class="btn btn--accent w-auto">+ NUEVO JUEGO</a>
         </div>
@@ -44,7 +51,7 @@ $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <p class="text-center text-light-grey">No hay juegos en el portafolio aún.</p>
         <?php else: ?>
             <div class="table-responsive">
-                <table class="admin-table">
+                <table class="admin-table" id="games-table">
                     <thead>
                         <tr>
                             <th>Img</th>
@@ -79,5 +86,6 @@ $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endif; ?>
     </main>
 
+    <script src="../js/admin.js"></script>
 </body>
 </html>

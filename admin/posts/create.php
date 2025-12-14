@@ -191,6 +191,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         // Enable autosave for this form
         const autosave = new AutoSave('post-form', 'draft_post_create', 30000);
+        
+        // Initialize drag & drop for post image
+        new DragDropUpload('post-image', 'post-image-preview');
     </script>
 </body>
 </html>

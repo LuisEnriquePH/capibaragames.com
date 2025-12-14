@@ -36,19 +36,51 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <main class="post-container max-w-1000">
         <div class="admin-page-header">
-            <h1 class="page-header__title m-0">POSTS DEL BLOG</h1>
-            <a href="create.php" class="btn btn--accent w-auto">+ NUEVO ARTÍCULO</a>
+            <h1 class="page-header__title">GESTIONAR POSTS</h1>
+            <a href="create.php" class="btn btn--accent">Nuevo Artículo</a>
+        </div>
+
+        <!-- Search and Filters -->
+        <div class="admin-filters mb-2">
+            <input type="search" 
+                   id="search-posts" 
+                   class="admin-search-input" 
+                   placeholder="🔍 Buscar por título..."
+                   onkeyup="filterTable(this, 'posts-table')">
+            
+            <select id="status-filter" class="admin-filter-select" onchange="filterByStatus()">
+                <option value="">Todos los estados</option>
+                <option value="published">Publicados</option>
+                <option value="draft">Borradores</option>
+            </select>
         </div>
 
         <?php if (empty($posts)): ?>
             <p class="text-center text-light-grey">No hay artículos creados aún.</p>
         <?php else: ?>
-            <div class="table-responsive">
-                <table class="admin-table">
+            <!-- Bulk Actions Form -->
+            <form id="bulk-form" method="POST" action="bulk_action.php">
+                <?php csrfField(); ?>
+                
+                <div class="bulk-actions-bar mb-2">
+                    <input type="checkbox" id="select-all" onclick="selectAll(this, 'bulk-checkbox')" title="Seleccionar todos">
+                    <select name="action" class="admin-filter-select" required>
+                        <option value="">Acción masiva...</option>
+                        <option value="delete">🗑️ Borrar seleccionados</option>
+                        <option value="publish">✅ Publicar</option>
+                        <option value="draft">📝 Convertir a borrador</option>
+                    </select>
+                    <button type="submit" class="btn btn--primary admin-btn-sm">Aplicar</button>
+                </div>
+                
+                <div class="table-responsive">
+                <table class="admin-table" id="posts-table">
                     <thead>
                         <tr>
+                            <th style="width: 40px;"></th>
                             <th>ID</th>
                             <th>Título</th>
+                            <th>Autor</th>
                             <th>Estado</th>
                             <th>Fecha</th>
                             <th>Acciones</th>
@@ -56,17 +88,18 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </thead>
                     <tbody>
                         <?php foreach ($posts as $post): ?>
+                            <?php
+                            $label = ($post['status'] === 'published') ? 'Publicado' : 'Borrador';
+                            $modifier = ($post['status'] === 'published') ? 'status-badge--published' : 'status-badge--draft';
+                            ?>
                             <tr>
-                                <td class="text-grey">#<?php echo $post['id']; ?></td>
+                                <td><input type="checkbox" name="ids[]" value="<?php echo $post['id']; ?>" class="bulk-checkbox"></td>
+                                <td class="text-light-grey"><?php echo $post['id']; ?></td>
                                 <td>
                                     <strong><?php echo htmlspecialchars($post['title']); ?></strong>
                                 </td>
+                                <td class="text-grey">Admin</td>
                                 <td>
-                                    <?php 
-                                        $status = $post['status'] ?? 'draft'; 
-                                        $modifier = ($status === 'published') ? 'status-badge--published' : 'status-badge--draft';
-                                        $label = ($status === 'published') ? 'Publicado' : 'Borrador';
-                                    ?>
                                     <span class="status-badge <?php echo $modifier; ?>"><?php echo $label; ?></span>
                                 </td>
                                 <td class="text-grey"><?php echo date("d/m/Y", strtotime($post['created_at'])); ?></td>
@@ -79,8 +112,27 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </tbody>
                 </table>
             </div>
+            </form>
         <?php endif; ?>
     </main>
 
+    <script src="../js/admin.js"></script>
+    <script>
+        // Status filter function
+        function filterByStatus() {
+            const statusFilter = document.getElementById('status-filter').value.toLowerCase();
+            const table = document.getElementById('posts-table');
+            const rows = table.querySelectorAll('tbody tr');
+            
+            rows.forEach(row => {
+                if (!statusFilter) {
+                    row.style.display = '';
+                } else {
+                    const statusBadge = row.querySelector('.status-badge').textContent.toLowerCase();
+                    row.style.display = statusBadge.includes(statusFilter.replace('published', 'publicado').replace('draft', 'borrador')) ? '' : 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
