@@ -114,7 +114,7 @@
         <div class="max-w-7xl mx-auto px-5 flex justify-between items-center flex-wrap">
             <!-- Logo -->
             <a href="index.php" class="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
-                <img src="assets/uploads/images/Logotipo.png" alt="Capibara Games Logo" class="h-20 w-20">
+                <img src="assets/uploads/images/Logotipo.png" alt="Capibara Games Logo" class="w-20 h-auto">
                 <span class="logo-text hidden sm:inline">CAPIBARA GAMES</span>
             </a>
 
