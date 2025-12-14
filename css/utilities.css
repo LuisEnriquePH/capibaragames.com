@@ -40,6 +40,19 @@
     margin: 0;
 }
 
+.p-1 {
+    padding: 1rem;
+}
+
+.py-4 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.pt-2 {
+    padding-top: 2rem;
+}
+
 .mt-1 {
     margin-top: 1rem;
 }
@@ -175,6 +188,10 @@
 
 .border-none {
     border: none !important;
+}
+
+.border-top-dark {
+    border-top: 1px solid #444;
 }
 
 /* --- SPECIFIC HELPERS --- */

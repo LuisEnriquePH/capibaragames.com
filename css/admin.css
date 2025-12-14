@@ -1,0 +1,125 @@
+/* =========================================
+   ADMIN PANEL STYLES
+   ========================================= */
+
+/* --- ADMIN HEADER --- */
+.admin-header {
+    padding: 1rem 0;
+    background: var(--c-bg-card);
+    border-bottom: 2px solid var(--c-accent-purple);
+}
+
+.admin-header__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .admin-header__container {
+        flex-wrap: wrap;
+    }
+}
+
+/* --- ADMIN TABLES --- */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background: var(--c-bg-card);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+.admin-table th {
+    background: #111;
+    color: var(--c-green-main);
+    font-family: var(--f-title);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.admin-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* --- ADMIN UTILITIES --- */
+.admin-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+@media (max-width: 600px) {
+    .admin-page-header {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.admin-thumb {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.editor-wrapper {
+    background: white;
+    border-radius: 4px;
+    color: black;
+}
+
+/* --- FORM OVERRIDES --- */
+.form-select-dark {
+    background: var(--c-bg-dark);
+    color: white;
+}
+
+/* --- STATUS BADGES --- */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status-badge--draft {
+    background: #444;
+    color: #ccc;
+}
+
+.status-badge--published {
+    background: rgba(133, 209, 62, 0.2);
+    color: var(--c-green-main);
+}
+
+.badge-self {
+    font-size: 0.7rem;
+    padding: 2px 5px;
+    background-color: var(--c-accent-purple);
+    color: white;
+    border-radius: 4px;
+    margin-left: 5px;
+}

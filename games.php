@@ -17,7 +17,7 @@ try {
     <h1 class="page-header__title">MIS JUEGOS</h1>
 </section>
 
-<main class="updates mt-2">
+<main class="games-container">
     
     <?php if (isset($error)): ?>
         <div class="text-center text-highlight fs-15">

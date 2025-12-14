@@ -1,0 +1,7 @@
+Options -Indexes
+<FilesMatch "\.(php|phtml|php3|php4|php5|pl|py|jsp|asp|html|htm|shtml|sh|cgi)$">
+    Deny from all
+</FilesMatch>
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|mp4|webm|svg)$">
+    Allow from all
+</FilesMatch>

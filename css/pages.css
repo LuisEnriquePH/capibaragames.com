@@ -56,13 +56,11 @@
 
 /* --- CONTACT PAGE --- */
 .contact-container {
-    max-width: 1100px;
+    max-width: 800px;
     margin: 4rem auto;
     padding: 0 20px;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 40px;
-    align-items: start;
+    display: flex;
+    justify-content: center;
     flex: 1;
 }
 
@@ -177,14 +175,21 @@
 }
 
 /* --- GAMES PAGE --- */
+.games-container {
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 0 20px;
+    width: 100%;
+    /* Estilo similar a post-container pero más ancho */
+}
+
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    /* Compacto: ~4 por fila en 1000px */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* Cambiado a auto-fit y reducido a 200px para evitar columna única */
     gap: 20px;
-    max-width: 1000px;
-    /* Alineado con blog-list */
-    margin: 0 auto;
+    width: 100%;
+    /* Asegurar que llene el contenedor */
     padding-bottom: 40px;
 }
 

@@ -6,33 +6,9 @@
 
 <main class="contact-container">
     
-    <section class="contact-form-section">
-        <article class="card card--text">
-            <h2 class="card__title text-green">ENVÍA UN MENSAJE</h2>
-            <p class="card__subtitle" >¿Tienes una idea, un proyecto o simplemente quieres saludar? Escríbeme.</p>
-            
-            <form action="#" method="POST" class="contact-form">
-                <div class="form__group">
-                    <label for="name" class="form__label">Nombre</label>
-                    <input type="text" id="name" name="name" class="form__input" required>
-                </div>
 
-                <div class="form__group">
-                    <label for="email" class="form__label">Email</label>
-                    <input type="email" id="email" name="email" class="form__input" required>
-                </div>
 
-                <div class="form__group">
-                    <label for="message" class="form__label">Mensaje</label>
-                    <textarea id="message" name="message" class="form__textarea" rows="5" required></textarea>
-                </div>
-
-                <button type="submit" class="btn btn--accent w-100 border-none">ENVIAR MENSAJE</button>
-            </form>
-        </article>
-    </section>
-
-    <aside class="contact-socials">
+    <section class="contact-socials w-100">
         
         <article class="card card--text">
             <h2 class="card__title text-highlight">CONECTEMOS</h2>
@@ -40,8 +16,8 @@
             
             <ul class="social-list">
                 <li>
-                    <a href="mailto:luisenriquepina.h@gmail.com" class="social-list__link">
-                        <span class="icon-box">📧</span> luisenriquepina.h@gmail.com
+                    <a href="mailto:losjuegosdelcapibara@gmail.com" class="social-list__link">
+                        <span class="icon-box">📧</span> losjuegosdelcapibara@gmail.com
                     </a>
                 </li>
                 <li>
@@ -72,7 +48,7 @@
             </ul>
         </article>
 
-    </aside>
+    </section>
 
 </main>
 

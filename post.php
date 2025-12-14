@@ -12,8 +12,16 @@ if (isset($_GET['slug'])) {
 }
 
 // Si no existe el post, redirigir al blog o mostrar error 404
+// Si no existe el post, mostrar 404
 if (!$post) {
-    header("Location: blog.php");
+    http_response_code(404);
+    include 'includes/header.php';
+    echo '<main class="post-container text-center py-4">
+            <h1 class="text-green fs-4">404</h1>
+            <p class="text-white fs-2 mb-2">Vaya, este artículo no existe o se ha perdido en el ciberespacio.</p>
+            <a href="blog.php" class="btn btn--secondary">Volver al Blog</a>
+          </main>';
+    include 'includes/footer.php';
     exit;
 }
 
@@ -36,10 +44,14 @@ include 'includes/header.php';
     </p>
 
     <div class="post-content fs-1 lh-18 text-light-grey">
-        <?php echo nl2br(htmlspecialchars($post['content'])); ?>
+        <?php 
+            require 'includes/Parsedown.php';
+            $Parsedown = new Parsedown();
+            echo $Parsedown->text($post['content']); 
+        ?>
     </div>
 
-    <div class="mt-4" style="border-top: 1px solid #444; padding-top: 2rem;">
+    <div class="mt-4 pt-2 border-top-dark">
         <a href="blog.php" class="btn btn--secondary">← Volver al Blog</a>
     </div>
 

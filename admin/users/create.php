@@ -1,0 +1,103 @@
+<?php
+require '../includes/auth.php';
+require '../../includes/db.php';
+
+$error = '';
+$success = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['username']);
+    $role = $_POST['role'];
+    $password = $_POST['password'];
+
+    if (!empty($username) && !empty($password)) {
+        try {
+            // Verificar si existe
+            $stmt = $pdo->prepare("SELECT COUNT(*) FROM users WHERE username = :username");
+            $stmt->execute(['username' => $username]);
+            if ($stmt->fetchColumn() > 0) {
+                $error = "El nombre de usuario ya existe.";
+            } else {
+                // Hashear password
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+                $stmt = $pdo->prepare("INSERT INTO users (username, password, role) VALUES (:username, :password, :role)");
+                $stmt->execute([
+                    'username' => $username,
+                    'password' => $hashed_password,
+                    'role' => $role
+                ]);
+                $success = "Usuario creado exitosamente. <a href='index.php'>Volver a la lista</a>";
+            }
+        } catch (PDOException $e) {
+            $error = "Error al guardar: " . $e->getMessage();
+        }
+    } else {
+        $error = "Todos los campos son obligatorios.";
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Usuario - Capibara Admin</title>
+    
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/pages.css">
+    <link rel="stylesheet" href="../../css/utilities.css">
+</head>
+<body>
+
+    <header class="header" style="padding: 1rem 0; background: var(--c-bg-card); border-bottom: 2px solid var(--c-accent-purple);">
+        <div class="header__container" style="justify-content: space-between;">
+            <div class="header__logo">
+                <a href="../index.php" class="header__logo-text text-highlight">CAPIBARA ADMIN</a>
+            </div>
+            <nav class="header__nav d-flex align-center" style="gap: 20px;">
+                <a href="index.php" class="btn btn--secondary" style="font-size: 1rem; padding: 5px 10px;">Cancelar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="post-container" style="max-width: 600px;">
+        <h1 class="page-header__title mb-2 text-center">NUEVO USUARIO</h1>
+
+        <?php if ($error): ?>
+            <p class="text-center" style="color: #ff6b6b; margin-bottom: 1rem;"><?php echo $error; ?></p>
+        <?php endif; ?>
+
+        <?php if ($success): ?>
+            <p class="text-center text-green mb-2"><?php echo $success; ?></p>
+        <?php else: ?>
+
+        <form action="create.php" method="POST" class="contact-form">
+            <div class="form__group">
+                <label class="form__label">Usuario</label>
+                <input type="text" name="username" class="form__input" required placeholder="Ej: editor1">
+            </div>
+
+            <div class="form__group">
+                <label class="form__label">Contraseña</label>
+                <input type="password" name="password" class="form__input" required placeholder="******">
+            </div>
+
+            <div class="form__group">
+                <label class="form__label">Rol</label>
+                <select name="role" class="form__input" style="background:var(--c-bg-dark); color:white;">
+                    <option value="editor">Editor</option>
+                    <option value="admin">Administrador</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn--accent w-100">CREAR USUARIO</button>
+        </form>
+
+        <?php endif; ?>
+    </main>
+
+</body>
+</html>

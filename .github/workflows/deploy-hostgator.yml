@@ -11,6 +11,9 @@ jobs:
     steps:
     - name: 🚚 Obtener el código más reciente
       uses: actions/checkout@v4
+
+    - name: 📦 Instalar dependencias PHP
+      run: composer install --no-dev --optimize-autoloader
     
     - name: 📂 Sincronizar archivos con Hostgator
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
