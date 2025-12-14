@@ -15,7 +15,7 @@ require 'includes/auth.php';
     <link rel="stylesheet" href="../css/utilities.css">
     <link rel="stylesheet" href="../css/admin.css">
 </head>
-<body>
+<body class="admin-page">
 
     <!-- Admin Header Reusing Components -->
     <header class="header admin-header">

@@ -20,7 +20,7 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="../../css/utilities.css">
     <link rel="stylesheet" href="../../css/admin.css">
 </head>
-<body>
+<body class="admin-page">
 
     <header class="header admin-header">
         <div class="header__container admin-header__container">

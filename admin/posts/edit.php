@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .CodeMirror-cursor { border-left: 1px solid white; }
     </style>
 </head>
-<body>
+<body class="admin-page">
 
     <header class="header admin-header">
         <div class="header__container admin-header__container">

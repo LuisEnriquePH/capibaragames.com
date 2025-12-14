@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../../css/pages.css">
     <link rel="stylesheet" href="../../css/utilities.css">
 </head>
-<body>
+<body class="admin-page">
 
     <header class="header admin-header">
         <div class="header__container admin-header__container">

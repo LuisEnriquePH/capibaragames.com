@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .login-card { max-width: 400px; width: 100%; margin: 20px; }
     </style>
 </head>
-<body>
+<body class="admin-page">
 
     <article class="card login-card">
         <div class="card__header">
