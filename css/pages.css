@@ -1,0 +1,196 @@
+/* =========================================
+   PAGES (About & Contact)
+   ========================================= */
+
+.page-header {
+    text-align: center;
+    padding: 1rem 0;
+    border-bottom: 2px solid var(--c-green-dark);
+}
+
+/* --- ABOUT PAGE --- */
+.about-grid {
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.card--photo {
+    transform: rotate(-2deg);
+    border-color: var(--c-green-main);
+}
+
+.card--photo:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+.profile-role {
+    font-family: var(--f-title);
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--c-highlight);
+    text-shadow: var(--shadow-retro);
+}
+
+.card--text {
+    margin-bottom: 20px;
+    min-height: auto;
+}
+
+.card--text .card__body {
+    padding: 3rem;
+    /* Aumentado considerablemente para dar aire */
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+.card__subtitle {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* --- CONTACT PAGE --- */
+.contact-container {
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    align-items: start;
+    flex: 1;
+}
+
+.form__group {
+    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.form__label {
+    display: block;
+    font-family: var(--f-title);
+    font-size: 1.3rem;
+    color: var(--c-green-main);
+    margin-bottom: 5px;
+}
+
+.form__input,
+.form__textarea {
+    width: 100%;
+    padding: 1rem;
+    /* Aumentado de 12px a 1rem (16px) */
+    background-color: var(--c-bg-dark);
+    border: 1px solid #444;
+    color: var(--c-white);
+    font-family: var(--f-body);
+    font-size: 1.1rem;
+    /* Un poco más grande para mejor lectura */
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.form__input:focus,
+.form__textarea:focus {
+    outline: none;
+    border-color: var(--c-green-main);
+    box-shadow: 0 0 8px rgba(133, 209, 62, 0.2);
+}
+
+.social-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-list__link {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* Más espacio entre icono y texto */
+    padding: 15px 20px;
+    /* Más padding interno */
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--c-white);
+    transition: transform 0.2s, background-color 0.2s;
+    font-size: 1.1rem;
+}
+
+.social-list__link:hover {
+    background-color: rgba(133, 209, 62, 0.1);
+    transform: translateX(10px);
+    color: var(--c-green-main);
+}
+
+.icon-box {
+    font-size: 1.5rem;
+}
+
+/* --- RESPONSIVE PAGES --- */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-sidebar {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form-section {
+        order: 2;
+    }
+
+    .contact-socials {
+        order: 1;
+    }
+}
+
+/* --- ABOUT TEXT CONTENT --- */
+.card__text-content {
+    text-align: justify;
+    line-height: 1.8;
+    /* Mejor lectura */
+    margin-bottom: 1rem;
+}
+
+/* --- BLOG PAGE --- */
+.blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* --- GAMES PAGE --- */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    /* Compacto: ~4 por fila en 1000px */
+    gap: 20px;
+    max-width: 1000px;
+    /* Alineado con blog-list */
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+    .games-grid {
+        grid-template-columns: 1fr;
+        /* Una sola columna en móvil */
+    }
+}

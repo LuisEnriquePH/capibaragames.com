@@ -17,18 +17,18 @@ try {
     <h1 class="page-header__title">MIS JUEGOS</h1>
 </section>
 
-<main class="updates" style="margin-top: 2rem;">
+<main class="updates mt-2">
     
     <?php if (isset($error)): ?>
-        <div style="text-align: center; color: var(--c-highlight); font-size: 1.5rem;">
+        <div class="text-center text-highlight fs-15">
             ⚠️ <?php echo $error; ?>
         </div>
     <?php else: ?>
         
-        <div class="cards-grid">
+        <div class="games-grid">
             
             <?php foreach ($games as $game): ?>
-                <article class="card card--game">
+                <article class="card card--game card--compact">
                     <div class="card__header">
                         <span class="badge badge--game">JUEGO</span>
                     </div>
@@ -43,15 +43,14 @@ try {
                         <h3 class="card__title"><?php echo htmlspecialchars($game['title']); ?></h3>
                         <p class="card__excerpt"><?php echo htmlspecialchars($game['description']); ?></p>
                         
-                        <div style="margin-top: auto; width: 100%;">
-                            <p style="font-size: 0.9rem; color: #888; margin-bottom: 10px;">
+                        <div class="card-action-area">
+                            <p class="post-meta-date">
                                 Lanzamiento: <?php echo date("d/m/Y", strtotime($game['release_date'])); ?>
                             </p>
                             
                             <a href="<?php echo htmlspecialchars($game['itchio_url']); ?>" 
                                target="_blank" 
-                               class="btn btn--accent" 
-                               style="width: 100%; text-align: center; display: block;">
+                               class="btn btn--accent w-100 text-center d-block">
                                 Jugar Ahora
                             </a>
                         </div>

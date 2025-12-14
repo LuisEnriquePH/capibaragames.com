@@ -15,18 +15,19 @@ try {
     <h1 class="page-header__title">BLOG & DEVLOGS</h1>
 </section>
 
-<main class="updates" style="margin-top: 2rem;">
+<main class="updates mt-2">
     
     <?php if (isset($error)): ?>
-        <p style="text-align: center; color: var(--c-highlight);"><?php echo $error; ?></p>
+        <p class="text-center text-highlight"><?php echo $error; ?></p>
     <?php elseif (empty($posts)): ?>
-        <p style="text-align: center; color: #888;">Aún no hay artículos publicados.</p>
+        <p class="text-center text-grey">Aún no hay artículos publicados.</p>
     <?php else: ?>
         
-        <div class="cards-grid">
+        <!-- Lista vertical de artículos -->
+        <div class="blog-list">
             
             <?php foreach ($posts as $post): ?>
-                <article class="card card--blog">
+                <article class="card card--horizontal">
                     <div class="card__header">
                         <span class="badge badge--blog">ARTÍCULO</span>
                     </div>
@@ -41,7 +42,7 @@ try {
                     
                     <div class="card__body">
                         <h3 class="card__title">
-                            <a href="post.php?slug=<?php echo htmlspecialchars($post['slug']); ?>" style="text-decoration:none; color:inherit;">
+                            <a href="post.php?slug=<?php echo htmlspecialchars($post['slug']); ?>">
                                 <?php echo htmlspecialchars($post['title']); ?>
                             </a>
                         </h3>
@@ -50,14 +51,13 @@ try {
                             <?php echo htmlspecialchars(substr($post['excerpt'], 0, 100)) . '...'; ?>
                         </p>
                         
-                        <div style="margin-top: auto;">
-                            <span style="display:block; font-size: 0.8rem; color: #666; margin-bottom: 10px;">
+                        <div class="mt-auto">
+                            <span class="post-meta-date">
                                 Publicado: <?php echo date("d/m/Y", strtotime($post['created_at'])); ?>
                             </span>
                             
                             <a href="post.php?slug=<?php echo htmlspecialchars($post['slug']); ?>" 
-                               class="btn btn--secondary" 
-                               style="width: 100%; text-align: center; display: block;">
+                               class="btn btn--secondary w-100 text-center d-block">
                                 Leer Artículo
                             </a>
                         </div>

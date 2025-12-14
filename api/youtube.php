@@ -1,9 +1,27 @@
 <?php
 // api/youtube.php
 
-// --- CONFIGURACIÓN SEGURA ---
-// Esta llave vive en el servidor, nadie la puede ver desde el navegador.
-$apiKey = 'AIzaSyBh__OJjHnj5qV09Yf7z8HOxO_NHbbD2E0'; 
+// Cargar .env (usando lógica simple para no depender de librerías externas en este archivo)
+if (!function_exists('cargarEnv')) {
+    function cargarEnv($ruta) {
+        if (!file_exists($ruta)) return;
+        $lineas = file($ruta, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        foreach ($lineas as $linea) {
+            if (strpos(trim($linea), '#') === 0) continue;
+            list($nombre, $valor) = explode('=', $linea, 2);
+            $_ENV[trim($nombre)] = trim($valor);
+        }
+    }
+}
+cargarEnv(__DIR__ . '/../.env');
+
+// Esta llave vive en el servidor, obtenida del entorno
+$apiKey = $_ENV['YOUTUBE_API_KEY'] ?? ''; 
+if (empty($apiKey)) {
+    http_response_code(500);
+    echo json_encode(['error' => 'Configuración de servidor incompleta (Falta API Key)']);
+    exit;
+} 
 $channelId = 'UCU6_Ax2E_EX3ZVekN7_yAjw'; // Ejemplo: UCzE-q9Gg...
 
 // Archivo donde guardaremos la copia temporal (Caché)

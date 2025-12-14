@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchLatestVideo() {
     const container = document.getElementById('youtube-container');
-    
+
     // Apuntamos a NUESTRO servidor, no a Google directamente
-    const apiUrl = 'api/youtube.php'; 
+    const apiUrl = 'api/youtube.php';
 
     try {
         const response = await fetch(apiUrl);
-        
+
         if (!response.ok) throw new Error('Error en el servidor backend');
 
         const data = await response.json();
@@ -19,7 +19,21 @@ async function fetchLatestVideo() {
             const video = data.items[0];
             const videoId = video.id.videoId;
             const title = video.snippet.title;
-            
+            const dateStr = video.snippet.publishedAt; // "2025-02-15T..."
+
+            // Actualizar Título
+            const titleEl = document.getElementById('youtube-title');
+            if (titleEl) titleEl.innerText = title;
+
+            // Actualizar Fecha
+            const dateEl = document.getElementById('youtube-date');
+            if (dateEl) {
+                const dateObj = new Date(dateStr);
+                // Formato: DD/MM/YYYY
+                const formattedDate = dateObj.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' });
+                dateEl.innerText = `Publicado: ${formattedDate}`;
+            }
+
             // Inyectamos el video
             container.innerHTML = `
                 <iframe 

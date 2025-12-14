@@ -1,0 +1,205 @@
+/* =========================================
+   UTILITIES (Helpers & Common Classes)
+   ========================================= */
+
+/* --- ALIGNMENT --- */
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.d-block {
+    display: block;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+/* --- SPACING (Margins & Paddings) --- */
+.m-0 {
+    margin: 0;
+}
+
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.mt-3 {
+    margin-top: 3rem;
+}
+
+.mt-4 {
+    margin-top: 4rem;
+}
+
+.mt-auto {
+    margin-top: auto;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+/* --- SIZING --- */
+.w-100 {
+    width: 100%;
+}
+
+.h-auto {
+    height: auto;
+}
+
+.max-w-800 {
+    max-width: 800px;
+}
+
+.max-w-1000 {
+    max-width: 1000px;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- COLORS --- */
+.text-highlight {
+    color: var(--c-highlight);
+}
+
+.text-green {
+    color: var(--c-green-main);
+}
+
+.text-white {
+    color: var(--c-white);
+}
+
+.text-grey {
+    color: #888;
+}
+
+.text-light-grey {
+    color: #ddd;
+}
+
+/* --- TYPOGRAPHY --- */
+.font-title {
+    font-family: var(--f-title);
+}
+
+.font-body {
+    font-family: var(--f-body);
+}
+
+.fs-08 {
+    font-size: 0.8rem;
+}
+
+.fs-09 {
+    font-size: 0.9rem;
+}
+
+.fs-1 {
+    font-size: 1rem;
+}
+
+.fs-12 {
+    font-size: 1.2rem;
+}
+
+.fs-15 {
+    font-size: 1.5rem;
+}
+
+.fs-2 {
+    font-size: 2rem;
+}
+
+.fs-3 {
+    font-size: 3rem;
+}
+
+.fs-4 {
+    font-size: 4rem;
+}
+
+.fs-5 {
+    font-size: 5rem;
+}
+
+.lh-1 {
+    line-height: 1;
+}
+
+.lh-18 {
+    line-height: 1.8;
+}
+
+/* --- BORDERS & BACKGROUNDS --- */
+.border-highlight {
+    border-color: var(--c-highlight) !important;
+}
+
+.bg-highlight {
+    background-color: var(--c-highlight) !important;
+}
+
+.border-none {
+    border: none !important;
+}
+
+/* --- SPECIFIC HELPERS --- */
+.post-meta-date {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.card-action-area {
+    margin-top: auto;
+    width: 100%;
+}
+
+.post-container {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 0 20px;
+}
+
+.post-banner-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid var(--c-green-dark);
+    margin-bottom: 2rem;
+}

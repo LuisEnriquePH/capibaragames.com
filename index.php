@@ -42,8 +42,13 @@ try {
                     <div class="placeholder-video">Cargando último video...</div>
                 </div>
                 <div class="card__body">
-                    <h3 class="card__title">Último contenido en YouTube</h3>
-                    <a href="https://www.youtube.com/@CapibaraGamesDev" target="_blank" class="btn btn--primary">Ver Canal</a>
+                    <h3 class="card__title" id="youtube-title">Cargando video...</h3>
+                    <div class="mt-auto">
+                        <span id="youtube-date" class="post-meta-date">
+                            <!-- Fecha cargada por JS -->
+                        </span>
+                        <a href="https://www.youtube.com/@CapibaraGamesDev" target="_blank" class="btn btn--primary w-100 text-center d-block">Ver Canal</a>
+                    </div>
                 </div>
             </article>
 
@@ -59,17 +64,28 @@ try {
                              class="card__img">
                     </a>
                 </div>
-                <div class="card__body">
-                    <h3 class="card__title">
-                        <a href="post.php?slug=<?php echo htmlspecialchars($latestPost['slug']); ?>" style="text-decoration:none; color:inherit;">
-                            <?php echo htmlspecialchars($latestPost['title']); ?>
-                        </a>
-                    </h3>
-                    <p class="card__excerpt">
-                        <?php echo htmlspecialchars(substr($latestPost['excerpt'], 0, 90)) . '...'; ?>
-                    </p>
-                    <a href="post.php?slug=<?php echo htmlspecialchars($latestPost['slug']); ?>" class="btn btn--secondary">Leer Artículo</a>
-                </div>
+                    <div class="card__body">
+                        <h3 class="card__title">
+                            <a href="post.php?slug=<?php echo htmlspecialchars($latestPost['slug']); ?>">
+                                <?php echo htmlspecialchars($latestPost['title']); ?>
+                            </a>
+                        </h3>
+                        
+                        <p class="card__excerpt">
+                            <?php echo htmlspecialchars(substr($latestPost['excerpt'], 0, 100)) . '...'; ?>
+                        </p>
+                        
+                        <div class="mt-auto">
+                            <span class="post-meta-date">
+                                Publicado: <?php echo date("d/m/Y", strtotime($latestPost['created_at'])); ?>
+                            </span>
+                            
+                            <a href="post.php?slug=<?php echo htmlspecialchars($latestPost['slug']); ?>" 
+                               class="btn btn--secondary w-100 text-center d-block">
+                                Leer Artículo
+                            </a>
+                        </div>
+                    </div>
             </article>
             <?php else: ?>
                 <article class="card card--blog">
@@ -92,7 +108,18 @@ try {
                     <p class="card__excerpt">
                         <?php echo htmlspecialchars(substr($latestGame['description'], 0, 90)) . '...'; ?>
                     </p>
-                    <a href="<?php echo htmlspecialchars($latestGame['itchio_url']); ?>" target="_blank" class="btn btn--accent">Jugar Ahora</a>
+                    
+                    <div class="card-action-area">
+                        <p class="post-meta-date">
+                            Lanzamiento: <?php echo date("d/m/Y", strtotime($latestGame['release_date'])); ?>
+                        </p>
+                        
+                        <a href="<?php echo htmlspecialchars($latestGame['itchio_url']); ?>" 
+                           target="_blank" 
+                           class="btn btn--accent w-100 text-center d-block">
+                           Jugar Ahora
+                        </a>
+                    </div>
                 </div>
             </article>
             <?php else: ?>

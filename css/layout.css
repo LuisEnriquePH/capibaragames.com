@@ -1,0 +1,264 @@
+/* =========================================
+   LAYOUT (Header, Hero, Footer, Grid)
+   ========================================= */
+
+/* --- HEADER & NAV --- */
+.header {
+    background-color: var(--c-bg-card);
+    border-bottom: 2px solid var(--c-green-main);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    width: 80px;
+    height: auto;
+}
+
+.logo-text {
+    font-family: var(--f-title);
+    font-size: 1.8rem;
+    color: var(--c-white);
+    text-shadow: var(--shadow-retro);
+}
+
+.nav__list {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav__link {
+    font-family: var(--f-title);
+    font-size: 1.5rem;
+    color: var(--c-white);
+}
+
+.nav__link:hover,
+.nav__link.active {
+    color: var(--c-green-main);
+    text-shadow: var(--shadow-neon);
+}
+
+.header__social {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    color: var(--c-green-main);
+}
+
+.social-link:hover {
+    color: var(--c-highlight);
+    transform: translateY(-2px);
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    position: relative;
+    height: 50vh;
+    /* Reducido de 80vh para mostrar más contenido abajo */
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 4px solid var(--c-green-dark);
+}
+
+.hero__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+    /* Ajuste ligero para centrar mejor el interés */
+    z-index: 1;
+}
+
+.hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    /* Restaurado a transparente oscuro */
+    z-index: 2;
+    backdrop-filter: blur(2px);
+}
+
+.hero__content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero__title {
+    font-family: var(--f-title);
+    font-size: 6rem;
+    color: var(--c-white);
+    text-shadow: 4px 4px 0px var(--c-accent-purple);
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.hero__slogan {
+    font-family: var(--f-title);
+    font-size: 2.5rem;
+    color: var(--c-green-main);
+    text-shadow: var(--shadow-retro);
+}
+
+/* --- COMMON LAYOUT & GRID --- */
+.updates {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-family: var(--f-title);
+    font-size: 3rem;
+    text-align: center;
+    margin: 0;
+    padding: 1rem;
+    /* Solicitud: "apding de 1 rem 0" */
+    color: var(--c-white);
+    text-shadow: 2px 2px 0px var(--c-green-main);
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding-bottom: 40px;
+}
+
+/* --- FOOTER --- */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--c-black);
+    color: #888;
+    margin-top: auto;
+    border-top: 4px solid var(--c-green-dark);
+}
+
+/* --- RESPONSIVE LAYOUT --- */
+/* --- MOBILE MENU TOGGLE (Default Hidden) --- */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: var(--c-green-main);
+    transition: 0.3s;
+}
+
+/* --- RESPONSIVE LAYOUT --- */
+@media (max-width: 768px) {
+    .header__container {
+        /* Mantener en fila: Logo izquierda, Hamburguesa derecha */
+        flex-wrap: wrap;
+        gap: 0;
+        padding-bottom: 10px;
+        /* Espacio si el menú se expande */
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Ocultar redes sociales si no caben, o moverlas */
+    .header__social {
+        display: none;
+    }
+
+    .header__nav {
+        /* Oculto por defecto */
+        display: none;
+        width: 100%;
+        order: 3;
+        /* Forzar abajo */
+        margin-top: 15px;
+        background-color: var(--c-bg-card);
+        border-top: 1px solid #333;
+    }
+
+    .header__nav.active {
+        display: block;
+        animation: slideDown 0.3s ease-out;
+    }
+
+    .nav__list {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .nav__link {
+        display: block;
+        padding: 15px;
+        border-bottom: 1px solid #333;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav__link:hover {
+        background-color: rgba(133, 209, 62, 0.1);
+    }
+
+    .hero__title {
+        font-size: 4rem;
+    }
+
+    .hero__slogan {
+        font-size: 1.5rem;
+    }
+
+    /* Ocultar sección Hero completamente en móvil para ir directo al contenido */
+    .hero {
+        display: none;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

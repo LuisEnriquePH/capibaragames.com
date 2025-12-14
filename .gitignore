@@ -12,3 +12,6 @@ Thumbs.db
 
 # --- Media (Opcional, si no quieres llenar el repo de imagenes) ---
 /assets/uploads/
+
+.env
+config/db.php

@@ -8,26 +8,26 @@
     
     <section class="contact-form-section">
         <article class="card card--text">
-            <h2 class="card__title" style="color: var(--c-green-main);">ENVÍA UN MENSAJE</h2>
-            <p style="margin-bottom: 20px;">¿Tienes una idea, un proyecto o simplemente quieres saludar? Escríbeme.</p>
+            <h2 class="card__title text-green">ENVÍA UN MENSAJE</h2>
+            <p class="card__subtitle" >¿Tienes una idea, un proyecto o simplemente quieres saludar? Escríbeme.</p>
             
-            <form action="#" method="POST" class="form">
+            <form action="#" method="POST" class="contact-form">
                 <div class="form__group">
                     <label for="name" class="form__label">Nombre</label>
-                    <input type="text" id="name" name="name" class="form__input" placeholder="Tu nombre" required>
+                    <input type="text" id="name" name="name" class="form__input" required>
                 </div>
 
                 <div class="form__group">
-                    <label for="email" class="form__label">Correo Electrónico</label>
-                    <input type="email" id="email" name="email" class="form__input" placeholder="tucorreo@ejemplo.com" required>
+                    <label for="email" class="form__label">Email</label>
+                    <input type="email" id="email" name="email" class="form__input" required>
                 </div>
 
                 <div class="form__group">
                     <label for="message" class="form__label">Mensaje</label>
-                    <textarea id="message" name="message" class="form__textarea" placeholder="¿En qué puedo ayudarte?" rows="5" required></textarea>
+                    <textarea id="message" name="message" class="form__textarea" rows="5" required></textarea>
                 </div>
 
-                <button type="submit" class="btn btn--accent" style="width: 100%; border: none; cursor: pointer;">ENVIAR MENSAJE</button>
+                <button type="submit" class="btn btn--accent w-100 border-none">ENVIAR MENSAJE</button>
             </form>
         </article>
     </section>
@@ -35,8 +35,8 @@
     <aside class="contact-socials">
         
         <article class="card card--text">
-            <h2 class="card__title" style="color: var(--c-highlight);">CONECTEMOS</h2>
-            <p>También puedes encontrarme en estas plataformas:</p>
+            <h2 class="card__title text-highlight">CONECTEMOS</h2>
+            <p class="card__subtitle">También puedes encontrarme en estas plataformas:</p>
             
             <ul class="social-list">
                 <li>

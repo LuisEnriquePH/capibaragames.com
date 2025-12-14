@@ -22,24 +22,24 @@ $pageTitle = $post['title'];
 include 'includes/header.php'; 
 ?>
 
-<main style="max-width: 800px; margin: 4rem auto; padding: 0 20px;">
+<main class="post-container">
     
     <img src="<?php echo htmlspecialchars($post['image_url']); ?>" 
          alt="<?php echo htmlspecialchars($post['title']); ?>" 
-         style="width: 100%; height: auto; border-radius: 8px; border: 2px solid var(--c-green-dark); margin-bottom: 2rem;">
+         class="post-banner-img">
 
-    <h1 style="font-family: var(--f-title); font-size: 4rem; color: var(--c-white); line-height: 1; margin-bottom: 10px;">
+    <h1 class="font-title fs-4 text-white lh-1 mb-1">
         <?php echo htmlspecialchars($post['title']); ?>
     </h1>
-    <p style="color: var(--c-green-main); margin-bottom: 2rem; font-family: var(--f-title); font-size: 1.2rem;">
+    <p class="text-green mb-2 font-title fs-12">
         📅 <?php echo date("d F, Y", strtotime($post['created_at'])); ?>
     </p>
 
-    <div class="post-content" style="font-size: 1.1rem; line-height: 1.8; color: #ddd;">
+    <div class="post-content fs-1 lh-18 text-light-grey">
         <?php echo nl2br(htmlspecialchars($post['content'])); ?>
     </div>
 
-    <div style="margin-top: 4rem; border-top: 1px solid #444; padding-top: 2rem;">
+    <div class="mt-4" style="border-top: 1px solid #444; padding-top: 2rem;">
         <a href="blog.php" class="btn btn--secondary">← Volver al Blog</a>
     </div>
 
