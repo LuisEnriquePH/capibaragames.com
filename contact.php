@@ -16,7 +16,7 @@
             
             <ul class="social-list">
                 <li>
-                    <a href="mailto:losjuegosdelcapibara@gmail.com" class="social-list__link">
+                    <a href="mailto:losjuegosdelcapibara@gmail.com?subject=Contacto%20desde%20Capibara%20Games" class="social-list__link" title="Enviar correo electrónico">
                         <span class="icon-box">📧</span> losjuegosdelcapibara@gmail.com
                     </a>
                 </li>
