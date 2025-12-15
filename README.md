@@ -367,7 +367,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Website: [capibaragames.com](https://capibaragames.com)
 - GitHub: [@LuisEnriquePH](https://github.com/LuisEnriquePH)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/your-profile)
+- LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/luispinah/)
 
 ---
 
@@ -387,6 +387,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ![GitHub code size](https://img.shields.io/github/languages/code-size/LuisEnriquePH/capibaragames.com)
 
 ---
+
+## 👤 Use of IA
+
+- Layout
+- Coding 
 
 <div align="center">
 
