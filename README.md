@@ -367,7 +367,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Website: [capibaragames.com](https://capibaragames.com)
 - GitHub: [@LuisEnriquePH](https://github.com/LuisEnriquePH)
-- LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/luispinah/)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/luispinah/)
 
 ---
 
