@@ -3,7 +3,7 @@ require '../includes/auth.php';
 require '../../includes/db.php';
 
 
-if (isset($_GET['id'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['id'])) {
     // Verify CSRF token
     requireCSRF();
     
