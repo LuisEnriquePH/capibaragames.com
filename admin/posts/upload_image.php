@@ -21,7 +21,7 @@ try {
         // EasyMDE espera: { "data": { "filePath": "<url>" } }
         echo json_encode([
             'data' => [
-                'filePath' => '../../' . $publicPath // Ruta relativa desde admin/posts/
+                'filePath' => '/' . $publicPath // Ruta absoluta para que funcione en el frontend
             ]
         ]);
     } else {

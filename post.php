@@ -30,6 +30,30 @@ $pageTitle = $post['title'];
 include 'includes/header.php'; 
 ?>
 
+<!-- Estilos Markdown estilo GitHub / Obsidian -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-dark.min.css">
+<style>
+    .markdown-body {
+        box-sizing: border-box;
+        margin: 0 auto;
+        padding: 30px;
+        background: rgba(20, 20, 30, 0.45); /* Glassmorphism background */
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        font-family: var(--f-body, 'Roboto', sans-serif);
+    }
+    .markdown-body img {
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    @media (max-width: 767px) {
+        .markdown-body {
+            padding: 15px;
+        }
+    }
+</style>
+
 <main class="post-container">
     
     <img src="<?php echo htmlspecialchars($post['image_url']); ?>" 
@@ -43,7 +67,7 @@ include 'includes/header.php';
         📅 <?php echo date("d F, Y", strtotime($post['created_at'])); ?>
     </p>
 
-    <div class="post-content fs-1 lh-18 text-light-grey">
+    <div class="post-content markdown-body mt-4">
         <?php 
             require 'includes/Parsedown.php';
             $Parsedown = new Parsedown();
