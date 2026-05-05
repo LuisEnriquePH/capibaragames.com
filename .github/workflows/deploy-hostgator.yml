@@ -32,9 +32,7 @@ jobs:
           **/.git*/**
           **/.github/**
           **/node_modules/**
-          README.md
-          CHANGELOG.md
-          LICENSE
+          **/*.md
           composer.json
           composer.lock
           package.json
