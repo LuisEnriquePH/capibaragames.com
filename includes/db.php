@@ -34,6 +34,8 @@ $options = [
 try {
      $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (\PDOException $e) {
-     throw new \PDOException($e->getMessage(), (int)$e->getCode());
+     // Para desarrollo local de diseño: no rompemos la página si falla la BD
+     $pdo = null;
+     // throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 ?>

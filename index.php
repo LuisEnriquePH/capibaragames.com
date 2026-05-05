@@ -4,16 +4,24 @@ include 'includes/header.php';
 
 // 1. OBTENER ÚLTIMO JUEGO
 try {
-    $stmtGame = $pdo->query("SELECT * FROM games ORDER BY release_date DESC LIMIT 1");
-    $latestGame = $stmtGame->fetch(PDO::FETCH_ASSOC);
+    if ($pdo) {
+        $stmtGame = $pdo->query("SELECT * FROM games ORDER BY release_date DESC LIMIT 1");
+        $latestGame = $stmtGame->fetch(PDO::FETCH_ASSOC);
+    } else {
+        $latestGame = null;
+    }
 } catch (Exception $e) {
     $latestGame = null;
 }
 
 // 2. OBTENER ÚLTIMO POST (BLOG)
 try {
-    $stmtPost = $pdo->query("SELECT * FROM posts ORDER BY created_at DESC LIMIT 1");
-    $latestPost = $stmtPost->fetch(PDO::FETCH_ASSOC);
+    if ($pdo) {
+        $stmtPost = $pdo->query("SELECT * FROM posts ORDER BY created_at DESC LIMIT 1");
+        $latestPost = $stmtPost->fetch(PDO::FETCH_ASSOC);
+    } else {
+        $latestPost = null;
+    }
 } catch (Exception $e) {
     $latestPost = null;
 }

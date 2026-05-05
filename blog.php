@@ -2,11 +2,14 @@
 include 'includes/header.php'; 
 include 'includes/db.php'; 
 
+// 1. OBTENER POSTS
+$posts = [];
 try {
-    // Pedimos los posts ordenados por fecha
-    $stmt = $pdo->query("SELECT * FROM posts ORDER BY created_at DESC");
-    $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
+    if ($pdo) {
+        $stmt = $pdo->query("SELECT * FROM posts ORDER BY created_at DESC");
+        $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+} catch (Exception $e) {
     $error = "Error cargando artículos.";
 }
 ?>

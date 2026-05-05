@@ -20,6 +20,11 @@
     /* Efectos */
     --shadow-retro: 3px 3px 0px var(--c-black);
     --shadow-neon: 0 0 10px rgba(133, 209, 62, 0.3);
+    
+    /* Premium Glassmorphism */
+    --glass-bg: rgba(20, 20, 30, 0.45);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+    --glass-blur: blur(16px);
 }
 
 * {
@@ -40,3 +45,17 @@ body {
 
 a { text-decoration: none; color: inherit; transition: 0.3s; }
 ul { list-style: none; }
+
+/* =========================================
+   ANIMACIONES GLOBALES
+   ========================================= */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

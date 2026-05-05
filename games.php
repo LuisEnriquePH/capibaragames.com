@@ -3,10 +3,13 @@ include 'includes/header.php';
 include 'includes/db.php'; // Tu conexión a la BD
 
 // Consulta segura a la base de datos
+$games = [];
 try {
-    // Pedimos todos los juegos ordenados por fecha (del más nuevo al más viejo)
-    $stmt = $pdo->query("SELECT * FROM games ORDER BY release_date DESC");
-    $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if ($pdo) {
+        // Pedimos todos los juegos ordenados por fecha (del más nuevo al más viejo)
+        $stmt = $pdo->query("SELECT * FROM games ORDER BY release_date DESC");
+        $games = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 } catch (PDOException $e) {
     // Si falla, guardamos el error para mostrarlo (solo en desarrollo)
     $error = "Error cargando juegos."; 
